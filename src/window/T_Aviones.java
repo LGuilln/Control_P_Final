@@ -5,7 +5,9 @@
  */
 package window;
 
-import clases.Persona;
+
+import clases.Aviones_C;
+import clases.Tanques_C;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
@@ -13,7 +15,7 @@ import javax.swing.table.DefaultTableModel;
  *
  * @author danie
  */
-public class Estadisticas extends javax.swing.JFrame {
+public class T_Aviones extends javax.swing.JFrame {
    
     private DefaultTableModel modelo;
     int cont = 0;
@@ -22,7 +24,7 @@ public class Estadisticas extends javax.swing.JFrame {
     /**
      * Creates new form Estadisticas
      */
-    public Estadisticas() {
+    public T_Aviones() {
         initComponents();
         this.setLocationRelativeTo(null);
         setSize(1290, 1000);
@@ -31,32 +33,34 @@ public class Estadisticas extends javax.swing.JFrame {
     }
 public void CargarRegistrar(){
     String datos [][]= {};
-    String columna[]= {"Nombre","Tipo V1", "V1", "Tipo V2", "V2", "Tipo V3", "V3"};
-    String columna1[] = { "V1" };
+    String columna[]= {"Avion", "Presicion","Ataque", "Defensa", "Velocidad", "Precio"};
+    String columna1[] = { "Avion" };
     
     
         
   
     
     modelo= new DefaultTableModel(datos, columna);
-    jTableEstadisticas.setModel(modelo);
+    jTableAviones.setModel(modelo);
     
 }
             public void Cargardatos(){
-                Persona a;
-                for (int i = 0; i < Registro.contenedor.size(); i++) {
-                    a= (Persona)Registro.contenedor.get(i);
+                Aviones_C c;
+                for (int i = 0; i < Aviones.contenedor.size(); i++) {
+                    c= (Aviones_C)Aviones.contenedor.get(i);
                     modelo.insertRow(cont, new Object []{ });
-                    modelo.setValueAt(a.getNombre(), cont, 0);
-                    modelo.setValueAt(a.getTipo1(), cont, 1);
-                    modelo.setValueAt(a.getV1(), cont, 2);
-                    modelo.setValueAt(a.getTipo2(), cont, 3);
-                    modelo.setValueAt(a.getV2(), cont, 4);
-                    modelo.setValueAt(a.getTipo3(), cont, 5);
-                    modelo.setValueAt(a.getV3(), cont, 6);
-                                                  
+                    modelo.setValueAt(c.getAvion(), cont, 0);
+                    modelo.setValueAt(c.getPresicion(), cont, 1);
+                    modelo.setValueAt(c.getAtaque(), cont, 2);
+                    modelo.setValueAt(c.getDefensa(), cont, 3);
+                    modelo.setValueAt(c.getVelocidad(), cont, 4);
+                    modelo.setValueAt(c.getPrecio(),cont,5);
                     
+                 
                 }
+                    
+                
+                
             }
     
     /**
@@ -73,7 +77,7 @@ public void CargarRegistrar(){
         jButtonJugar = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTableEstadisticas = new javax.swing.JTable();
+        jTableAviones = new javax.swing.JTable();
         jLabel1 = new javax.swing.JLabel();
         jScrollPane2 = new javax.swing.JScrollPane();
         jTableEstadisticas1 = new javax.swing.JTable();
@@ -141,19 +145,19 @@ public void CargarRegistrar(){
 
         jLabel2.setFont(new java.awt.Font("Arial Black", 0, 36)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(0, 255, 0));
-        jLabel2.setText("Estadisticas");
-        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 30, 280, 100));
+        jLabel2.setText("Aviones");
+        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 30, 280, 100));
 
-        jTableEstadisticas.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
-        jTableEstadisticas.setModel(new javax.swing.table.DefaultTableModel(
+        jTableAviones.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        jTableAviones.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
             new String [] {
-                "Nombre", "Tipo V1", "Vehículo 1", "Tipo V2", "Vehículo 2", "Tipo V3", "Vehículo 3"
+                "Avion", "Presicion", "Ataque", "Defensa", "Velocidad", "Precio"
             }
         ));
-        jScrollPane1.setViewportView(jTableEstadisticas);
+        jScrollPane1.setViewportView(jTableAviones);
 
         getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 120, 950, 630));
 
@@ -183,7 +187,7 @@ public void CargarRegistrar(){
 
     private void jButtonBack1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonBack1ActionPerformed
         this.setVisible(false);
-        //new interfaz().setVisible(true);
+        new Tienda().setVisible(true);        //new interfaz().setVisible(true);
 
         // TODO add your handling code here:
     }//GEN-LAST:event_jButtonBack1ActionPerformed
@@ -194,14 +198,14 @@ public void CargarRegistrar(){
 
     private void jButtonDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonDeleteActionPerformed
 
-        if(jTableEstadisticas.getSelectedRow()==-1){
-            if(jTableEstadisticas.getRowCount()<=0){
+        if(jTableAviones.getSelectedRow()==-1){
+            if(jTableAviones.getRowCount()<=0){
             }else{
             }
         }else{
             if(JOptionPane.showConfirmDialog(null,"¿Eliminar Registro?")==0){
-                DefaultTableModel model = (DefaultTableModel) jTableEstadisticas.getModel();
-                model.removeRow(jTableEstadisticas.getSelectedRow());
+                DefaultTableModel model = (DefaultTableModel) jTableAviones.getModel();
+                model.removeRow(jTableAviones.getSelectedRow());
             }
         }
 
@@ -214,7 +218,9 @@ public void CargarRegistrar(){
 
     private void jButtonJugarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonJugarActionPerformed
         this.setVisible(false);
-       // new NewJFrame().setVisible(true);
+        new Option().setVisible(true);        //new interfaz().setVisible(true);
+
+// new NewJFrame().setVisible(true);
 
         // TODO add your handling code here:
     }//GEN-LAST:event_jButtonJugarActionPerformed
@@ -236,21 +242,35 @@ public void CargarRegistrar(){
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Estadisticas.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(T_Aviones.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Estadisticas.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(T_Aviones.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Estadisticas.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(T_Aviones.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Estadisticas.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(T_Aviones.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new Estadisticas().setVisible(true);
+                new T_Aviones().setVisible(true);
             }
         });
     }
@@ -263,7 +283,7 @@ public void CargarRegistrar(){
     private javax.swing.JLabel jLabel2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JTable jTableEstadisticas;
+    private javax.swing.JTable jTableAviones;
     private javax.swing.JTable jTableEstadisticas1;
     // End of variables declaration//GEN-END:variables
 }

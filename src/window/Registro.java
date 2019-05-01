@@ -1,6 +1,7 @@
 
 package window;
 
+import clases.Persona;
 import java.awt.Image;
 import java.awt.Toolkit;
 import javax.swing.*;
@@ -9,12 +10,17 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+import java.util.ArrayList;
+import java.util.LinkedList;
 
 /**
  *
  * @author luedu
  */
 public class Registro extends javax.swing.JFrame {
+
+    public static LinkedList contenedor = new LinkedList();
+    public int buscar;
 
     
     // new jTable1;
@@ -43,47 +49,56 @@ public class Registro extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jBack = new javax.swing.JButton();
         jlNickname = new javax.swing.JLabel();
+        Back = new javax.swing.JButton();
         jLabel4 = new javax.swing.JLabel();
         Jugar = new javax.swing.JButton();
         jButton3Reportes = new javax.swing.JButton();
+        jLabel2 = new javax.swing.JLabel();
         nickname = new javax.swing.JTextField();
-        CB1 = new javax.swing.JComboBox<>();
         jLabel7 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
-        CB2 = new javax.swing.JComboBox<>();
+        v_1 = new javax.swing.JTextField();
+        v_2 = new javax.swing.JTextField();
+        v_3 = new javax.swing.JTextField();
         CB3 = new javax.swing.JComboBox<>();
-        Jugar1 = new javax.swing.JButton();
+        CB2 = new javax.swing.JComboBox<>();
+        CB1 = new javax.swing.JComboBox<>();
+        Save = new javax.swing.JButton();
+        Clean = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
+        Jmostrar1 = new javax.swing.JTextField();
+        Jmostrar2 = new javax.swing.JTextField();
+        Jmostrar3 = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        jBack.setBackground(new java.awt.Color(51, 255, 51));
-        jBack.setFont(new java.awt.Font("Arial Black", 0, 20)); // NOI18N
-        jBack.setForeground(new java.awt.Color(255, 51, 51));
-        jBack.setText("Back");
-        jBack.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jBackActionPerformed(evt);
-            }
-        });
-        getContentPane().add(jBack, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 620, 100, 40));
 
         jlNickname.setBackground(new java.awt.Color(102, 255, 102));
         jlNickname.setFont(new java.awt.Font("Arial Black", 0, 24)); // NOI18N
         jlNickname.setForeground(new java.awt.Color(51, 255, 51));
         jlNickname.setText("NickName:");
         jlNickname.setAutoscrolls(true);
-        getContentPane().add(jlNickname, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 60, -1, -1));
+        getContentPane().add(jlNickname, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 270, -1, -1));
+
+        Back.setBackground(new java.awt.Color(102, 255, 102));
+        Back.setFont(new java.awt.Font("Arial Black", 0, 18)); // NOI18N
+        Back.setForeground(new java.awt.Color(255, 0, 51));
+        Back.setText("Back");
+        Back.setActionCommand("Ver Reportes");
+        Back.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BackActionPerformed(evt);
+            }
+        });
+        getContentPane().add(Back, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 620, 90, -1));
 
         jLabel4.setBackground(new java.awt.Color(102, 255, 102));
         jLabel4.setFont(new java.awt.Font("Arial Black", 0, 20)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(51, 255, 0));
-        jLabel4.setText("Tercer Vehiculo");
-        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 220, 220, -1));
+        jLabel4.setText("Vehiculo 3:");
+        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 430, 220, -1));
 
         Jugar.setBackground(new java.awt.Color(102, 255, 102));
         Jugar.setFont(new java.awt.Font("Arial Black", 0, 18)); // NOI18N
@@ -95,7 +110,7 @@ public class Registro extends javax.swing.JFrame {
                 JugarActionPerformed(evt);
             }
         });
-        getContentPane().add(Jugar, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 620, -1, -1));
+        getContentPane().add(Jugar, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 620, -1, -1));
 
         jButton3Reportes.setBackground(new java.awt.Color(102, 255, 102));
         jButton3Reportes.setFont(new java.awt.Font("Arial Black", 0, 18)); // NOI18N
@@ -106,118 +121,208 @@ public class Registro extends javax.swing.JFrame {
                 jButton3ReportesActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton3Reportes, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 620, -1, -1));
+        getContentPane().add(jButton3Reportes, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 620, 170, -1));
+
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/register.jpg"))); // NOI18N
+        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 50, -1, -1));
 
         nickname.setFont(new java.awt.Font("Arial", 0, 20)); // NOI18N
         nickname.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        getContentPane().add(nickname, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 60, 340, 30));
-
-        CB1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Avión", "Tanque" }));
-        CB1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                CB1ActionPerformed(evt);
-            }
-        });
-        getContentPane().add(CB1, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 120, 120, 30));
+        getContentPane().add(nickname, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 270, 370, 30));
 
         jLabel7.setBackground(new java.awt.Color(102, 255, 102));
         jLabel7.setFont(new java.awt.Font("Arial Black", 0, 20)); // NOI18N
         jLabel7.setForeground(new java.awt.Color(51, 255, 0));
-        jLabel7.setText("Primer Vehiculo");
-        getContentPane().add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 120, 190, -1));
+        jLabel7.setText("Vehiculo 1:");
+        getContentPane().add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 330, 190, -1));
 
         jLabel8.setBackground(new java.awt.Color(102, 255, 102));
         jLabel8.setFont(new java.awt.Font("Arial Black", 0, 20)); // NOI18N
         jLabel8.setForeground(new java.awt.Color(51, 255, 0));
-        jLabel8.setText("Segundo Vehiculo");
-        getContentPane().add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 170, 220, -1));
+        jLabel8.setText("Vehiculo 2:");
+        getContentPane().add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 380, 220, -1));
 
-        CB2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Avión", "Tanque" }));
-        CB2.addActionListener(new java.awt.event.ActionListener() {
+        v_1.setFont(new java.awt.Font("Arial", 0, 20)); // NOI18N
+        v_1.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        getContentPane().add(v_1, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 330, 240, 30));
+
+        v_2.setFont(new java.awt.Font("Arial", 0, 20)); // NOI18N
+        v_2.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        v_2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                CB2ActionPerformed(evt);
+                v_2ActionPerformed(evt);
             }
         });
-        getContentPane().add(CB2, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 170, 120, 30));
+        getContentPane().add(v_2, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 380, 240, 30));
 
-        CB3.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Avión", "Tanque" }));
+        v_3.setFont(new java.awt.Font("Arial", 0, 20)); // NOI18N
+        v_3.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        getContentPane().add(v_3, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 430, 240, 30));
+
+        CB3.setFont(new java.awt.Font("Dubai", 3, 18)); // NOI18N
+        CB3.setForeground(new java.awt.Color(51, 0, 51));
+        CB3.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Elija Vehículo", "Avión", "Tanque", " " }));
+        CB3.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                CB3ItemStateChanged(evt);
+            }
+        });
         CB3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 CB3ActionPerformed(evt);
             }
         });
-        getContentPane().add(CB3, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 220, 120, 30));
+        getContentPane().add(CB3, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 430, -1, -1));
 
-        Jugar1.setBackground(new java.awt.Color(102, 255, 102));
-        Jugar1.setFont(new java.awt.Font("Arial Black", 0, 18)); // NOI18N
-        Jugar1.setForeground(new java.awt.Color(255, 0, 51));
-        Jugar1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/save.png"))); // NOI18N
-        Jugar1.setActionCommand("Ver Reportes");
-        Jugar1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                Jugar1ActionPerformed(evt);
+        CB2.setFont(new java.awt.Font("Dubai", 3, 18)); // NOI18N
+        CB2.setForeground(new java.awt.Color(51, 0, 51));
+        CB2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Elija Vehículo", "Avión", "Tanque", " " }));
+        CB2.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                CB2ItemStateChanged(evt);
             }
         });
-        getContentPane().add(Jugar1, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 170, 60, -1));
+        CB2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                CB2ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(CB2, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 380, -1, -1));
+
+        CB1.setFont(new java.awt.Font("Dubai", 3, 18)); // NOI18N
+        CB1.setForeground(new java.awt.Color(51, 0, 51));
+        CB1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Elija Vehículo", "Avión", "Tanque", " " }));
+        CB1.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                CB1ItemStateChanged(evt);
+            }
+        });
+        CB1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                CB1ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(CB1, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 330, -1, -1));
+
+        Save.setBackground(new java.awt.Color(102, 255, 102));
+        Save.setFont(new java.awt.Font("Arial Black", 0, 18)); // NOI18N
+        Save.setForeground(new java.awt.Color(255, 0, 51));
+        Save.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/save.png"))); // NOI18N
+        Save.setActionCommand("Ver Reportes");
+        Save.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                SaveActionPerformed(evt);
+            }
+        });
+        getContentPane().add(Save, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 490, 60, 70));
+
+        Clean.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/clean.jpg"))); // NOI18N
+        Clean.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                CleanActionPerformed(evt);
+            }
+        });
+        getContentPane().add(Clean, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 490, 80, 70));
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/WallpaperIz.jpg"))); // NOI18N
         getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 610, -1));
 
+        Jmostrar1.setFont(new java.awt.Font("Dubai", 3, 18)); // NOI18N
+        getContentPane().add(Jmostrar1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
+
+        Jmostrar2.setFont(new java.awt.Font("Dubai", 3, 18)); // NOI18N
+        getContentPane().add(Jmostrar2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
+
+        Jmostrar3.setFont(new java.awt.Font("Dubai", 3, 18)); // NOI18N
+        getContentPane().add(Jmostrar3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
+
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBackActionPerformed
-        this.setVisible(false);
-        new Option().setVisible(true);        // TODO add your handling code here:
-    }//GEN-LAST:event_jBackActionPerformed
-
     private void jButton3ReportesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ReportesActionPerformed
         this.setVisible(false); 
+        new Estadisticas().setVisible(true);
+        
        // new Reportes().setVisible(true);
     }//GEN-LAST:event_jButton3ReportesActionPerformed
 
     
     private void JugarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JugarActionPerformed
-    this.setVisible(false); 
-    //new Reportes().setVisible(true);
         
-    System.out.println(nickname.getText());
-    System.out.println(CB1.getSelectedItem()+"/");
-    System.out.println(CB2.getSelectedItem()+"/");
-    System.out.println(CB3.getSelectedItem()+"/");
-    
-    
-    jTable1.agregar(nickname.getText(),CB1.getSelectedItem()+"/",CB2.getSelectedItem()+"/",CB3.getSelectedItem()+"/");
-    
-    
-    nickname.setText("");
-    
-    //punteo.setText("");
-    //L1.setVisible(true);
-    //setVisible(false);
-    //L2.setVisible(true);
-    
-   
+  
 
         
 // TODO add your handling code here:
     }//GEN-LAST:event_JugarActionPerformed
 
-    private void CB1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CB1ActionPerformed
+    private void SaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SaveActionPerformed
+     
+     String nombre = nickname.getText();
+     String v1 = v_1.getText();
+     String v2 = v_2.getText();
+     String v3 = v_3.getText();
+     String tipo1 = Jmostrar1.getText();
+     String tipo2 = Jmostrar2.getText();
+     String tipo3 = Jmostrar3.getText();
+     
+        //NOMBRE DE LA PERSONA ATRUBUTOS
+        Persona  person = new Persona(nombre, v1, v2, v3, tipo1, tipo2, tipo3);
+        contenedor.add(person);
+        //Limpia
+        nickname.setText("");
+        v_1.setText("");
+        v_2.setText("");
+        v_3.setText("");
+     
+        
+// TODO add your handling code here:
+    }//GEN-LAST:event_SaveActionPerformed
+
+    private void v_2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_v_2ActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_CB1ActionPerformed
+    }//GEN-LAST:event_v_2ActionPerformed
+
+    private void BackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BackActionPerformed
+        this.setVisible(false);
+        new Option().setVisible(true);
+        
+// TODO add your handling code here:
+    }//GEN-LAST:event_BackActionPerformed
+
+    private void CleanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CleanActionPerformed
+        this.setVisible(false);
+        new Registro().setVisible(true);
+        
+// TODO add your handling code here:
+    }//GEN-LAST:event_CleanActionPerformed
+
+    private void CB3ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_CB3ItemStateChanged
+        // TODO add your handling code here:
+        this.Jmostrar3.setText(" "+CB3.getSelectedItem().toString());
+    }//GEN-LAST:event_CB3ItemStateChanged
+
+    private void CB3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CB3ActionPerformed
+        // TODO add your handling code here:
+
+    }//GEN-LAST:event_CB3ActionPerformed
+
+    private void CB2ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_CB2ItemStateChanged
+    this.Jmostrar2.setText(" "+CB2.getSelectedItem().toString());
+        // TODO add your handling code here:
+    }//GEN-LAST:event_CB2ItemStateChanged
 
     private void CB2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CB2ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_CB2ActionPerformed
 
-    private void CB3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CB3ActionPerformed
+    private void CB1ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_CB1ItemStateChanged
+       this.Jmostrar1.setText(" "+CB1.getSelectedItem().toString());
         // TODO add your handling code here:
-    }//GEN-LAST:event_CB3ActionPerformed
+    }//GEN-LAST:event_CB1ItemStateChanged
 
-    private void Jugar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Jugar1ActionPerformed
+    private void CB1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CB1ActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_Jugar1ActionPerformed
+    }//GEN-LAST:event_CB1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -256,19 +361,27 @@ public class Registro extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton Back;
     private javax.swing.JComboBox<String> CB1;
     private javax.swing.JComboBox<String> CB2;
     private javax.swing.JComboBox<String> CB3;
+    private javax.swing.JButton Clean;
+    private javax.swing.JTextField Jmostrar1;
+    private javax.swing.JTextField Jmostrar2;
+    private javax.swing.JTextField Jmostrar3;
     private javax.swing.JButton Jugar;
-    private javax.swing.JButton Jugar1;
-    private javax.swing.JButton jBack;
+    private javax.swing.JButton Save;
     private javax.swing.JButton jButton3Reportes;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jlNickname;
     private javax.swing.JTextField nickname;
+    private javax.swing.JTextField v_1;
+    private javax.swing.JTextField v_2;
+    private javax.swing.JTextField v_3;
     // End of variables declaration//GEN-END:variables
 
 }

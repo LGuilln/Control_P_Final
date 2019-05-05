@@ -6,6 +6,12 @@
 package window;
 
 import clases.Persona;
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
@@ -72,6 +78,7 @@ public void CargarRegistrar(){
         jButtonDelete = new javax.swing.JButton();
         jButtonJugar = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
+        Import = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTableEstadisticas = new javax.swing.JTable();
         jLabel1 = new javax.swing.JLabel();
@@ -144,6 +151,14 @@ public void CargarRegistrar(){
         jLabel2.setText("Estadisticas");
         getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 30, 280, 100));
 
+        Import.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/expor.png"))); // NOI18N
+        Import.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ImportActionPerformed(evt);
+            }
+        });
+        getContentPane().add(Import, new org.netbeans.lib.awtextra.AbsoluteConstraints(970, 20, 80, 70));
+
         jTableEstadisticas.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         jTableEstadisticas.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -183,6 +198,7 @@ public void CargarRegistrar(){
 
     private void jButtonBack1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonBack1ActionPerformed
         this.setVisible(false);
+        new Option().setVisible(true);
         //new interfaz().setVisible(true);
 
         // TODO add your handling code here:
@@ -218,6 +234,29 @@ public void CargarRegistrar(){
 
         // TODO add your handling code here:
     }//GEN-LAST:event_jButtonJugarActionPerformed
+
+    private void ImportActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ImportActionPerformed
+        
+        String filePath = "C:\\Users\\luedu\\Documents\\NetBeansProjects\\P_Final\\txtfile.txt";
+        File file = new File(filePath);
+        try {
+            FileWriter fw = new FileWriter(file);
+            BufferedWriter bw = new BufferedWriter(fw);
+            
+            for(int i = 0; i < jTableEstadisticas.getRowCount(); i++){//rows
+            for(int j = 0; j < jTableEstadisticas.getColumnCount(); j++){//columns
+            bw.write(jTableEstadisticas.getValueAt(i, j).toString()+" ");
+            }
+            bw.newLine();
+            }
+            
+            bw.close();
+            fw.close();
+            
+        } catch (IOException ex) {
+            Logger.getLogger(Estadisticas.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_ImportActionPerformed
 
     /**
      * @param args the command line arguments
@@ -256,6 +295,7 @@ public void CargarRegistrar(){
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton Import;
     private javax.swing.JButton jButtonBack1;
     private javax.swing.JButton jButtonDelete;
     private javax.swing.JButton jButtonJugar;

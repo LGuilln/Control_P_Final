@@ -5,11 +5,13 @@
  */
 package clases;
 
+import java.io.Serializable;
+
 /**
  *
  * @author danie
  */
-public class Persona {
+public class Persona implements Serializable{
     String nombre;
     String v1, v2, v3, tipo1, tipo2, tipo3;
 

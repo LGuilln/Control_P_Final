@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package ClasesdelProyecto;
+package clases;
 
 import java.awt.Color;
 
@@ -16,7 +16,7 @@ public class CasillaMontaña extends Casilla{
     
      public CasillaMontaña(){
     
-        this.setBackground(Color.white);
+        this.setBackground(Color.green);
 }
 
    

@@ -237,8 +237,9 @@ public void CargarRegistrar(){
         Registro.Jmostrar1.setText(jTableEstadisticas.getValueAt(fila,1).toString());
 
        // Registro.CB2.setText(jTableEstadisticas.getValueAt(fila,1).toString());
-        Registro.Jmostrar2.setText(CB2.getSelectedItem().toString());
-
+      // Registro.CB1.removeAllItems(); 
+       //Registro.CB1.addItem(jTableEstadisticas.getValueAt(fila,1).toString());
+                
         Registro.v_1.setText(jTableEstadisticas.getValueAt(fila,2).toString());
         Registro.Jmostrar2.setText(jTableEstadisticas.getValueAt(fila,3).toString());
         Registro.v_2.setText(jTableEstadisticas.getValueAt(fila,4).toString());
@@ -254,7 +255,12 @@ public void CargarRegistrar(){
 
     private void ImportActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ImportActionPerformed
         
-        String filePath = "C:\\Users\\luedu\\Documents\\NetBeansProjects\\P_Final\\txtfile.txt";
+        
+        String barra = File.separator;
+        
+       // String ubicacion = System.getProperty("user.dir" + barra+ "\\Registros"+barra);
+    
+        String filePath = "\"user.dir\" + barra+ \"\\\\Registros\"+barra";
         File file = new File(filePath);
         try {
             FileWriter fw = new FileWriter(file);

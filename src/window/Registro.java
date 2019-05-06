@@ -9,9 +9,19 @@ import javax.swing.border.TitledBorder;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 import java.util.ArrayList;
 import java.util.LinkedList;
+import java.util.Formatter;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import static window.Bienvenida.pathPersona;
 
 /**
  *
@@ -22,13 +32,9 @@ public class Registro extends javax.swing.JFrame {
     public static LinkedList contenedor = new LinkedList();
     public int buscar;
 
-    
-    // new jTable1;
-    
-    
-    /**
-     * Creates new form interfaz
-     */
+//     String barra = File.separator;
+  //  String ubicacion = System.getProperty("user.dir" + barra+ "\\Registros"+barra);
+   
     
     public Registro() {
         initComponents();
@@ -36,6 +42,68 @@ public class Registro extends javax.swing.JFrame {
  
     }
 
+   /* private void Crear(){
+    
+        String archivo = nickname.getText()+ ".registros";
+        File crea_ubicacion = new File (ubicacion);
+        File crea_archivo = new File (ubicacion+archivo);
+         if(nickname.getText().equals("")){
+             JOptionPane.showMessageDialog(rootPane, "No hay NickName");
+        }else{
+             
+             try{
+             
+             if(crea_archivo.exists()){
+             JOptionPane.showMessageDialog(rootPane, "El Registro ya Existe");
+             }else{
+             
+                 crea_ubicacion.mkdirs();
+                 Formatter crea = new Formatter(ubicacion+archivo);
+               crea.format ("%s\r\n%s\r\n%s\r\n%s", 
+                         "NickName="+nickname.getText(),
+                         "Vehiculo 1="+v_1.getText(), "Vehiculo 2="+v_2.getText(),
+                         "Vehiculo 3="+v_3.getText());
+                 crea.close();
+                 
+                 
+             }
+             } catch (Exception e){
+               JOptionPane.showMessageDialog(rootPane, "No Creado");
+ 
+                 
+             }
+             
+             
+             
+             
+         } 
+
+    }*/
+    public void createBin(){
+        ObjectOutputStream binario = null;
+        try {
+            String nameFile = nickname.getText();
+            File file = new File(nameFile);
+            Persona persona = (Persona) contenedor.getLast();
+           
+            binario = new ObjectOutputStream(new FileOutputStream(pathPersona+persona.getNombre()+".person"));
+            binario.writeObject(persona);
+            
+        } catch (Exception ex) {
+            ex.printStackTrace();
+           // Logger.getLogger(Registro.class.getName()).log(Level.SEVERE, null, ex);
+        } finally {
+            try {
+                binario.close();
+            } catch (IOException ex) {
+                Logger.getLogger(Registro.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+        
+    }
+   
+    
+    
     public Image getIconImage() {
         Image retValue = Toolkit.getDefaultToolkit().getImage(ClassLoader.getSystemResource("lueduardogr/picture/iconin.png"));
         return retValue;
@@ -242,13 +310,19 @@ public class Registro extends javax.swing.JFrame {
     private void jButton3ReportesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ReportesActionPerformed
         this.setVisible(false); 
         new Estadisticas().setVisible(true);
+       
+        
+        
         
        // new Reportes().setVisible(true);
     }//GEN-LAST:event_jButton3ReportesActionPerformed
 
     
     private void JugarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JugarActionPerformed
+        this.setVisible(false); 
+        new G_Escenarios().setVisible(true);
         
+             
   
 
         
@@ -256,7 +330,7 @@ public class Registro extends javax.swing.JFrame {
     }//GEN-LAST:event_JugarActionPerformed
 
     private void SaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SaveActionPerformed
-     
+        
      String nombre = nickname.getText();
      String v1 = v_1.getText();
      String v2 = v_2.getText();
@@ -274,7 +348,8 @@ public class Registro extends javax.swing.JFrame {
         v_2.setText("");
         v_3.setText("");
      
-        
+         Persona p = (Persona)contenedor.getLast();
+        createBin();
 // TODO add your handling code here:
     }//GEN-LAST:event_SaveActionPerformed
 
@@ -290,8 +365,11 @@ public class Registro extends javax.swing.JFrame {
     }//GEN-LAST:event_BackActionPerformed
 
     private void CleanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CleanActionPerformed
-        this.setVisible(false);
-        new Registro().setVisible(true);
+       
+        SaveActionPerformed(evt);
+       
+       // this.setVisible(false);
+       // new Registro().setVisible(true);
         
 // TODO add your handling code here:
     }//GEN-LAST:event_CleanActionPerformed
@@ -362,26 +440,26 @@ public class Registro extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton Back;
-    private javax.swing.JComboBox<String> CB1;
-    private javax.swing.JComboBox<String> CB2;
-    private javax.swing.JComboBox<String> CB3;
+    public static javax.swing.JComboBox<String> CB1;
+    public static javax.swing.JComboBox<String> CB2;
+    public static javax.swing.JComboBox<String> CB3;
     private javax.swing.JButton Clean;
-    private javax.swing.JTextField Jmostrar1;
-    private javax.swing.JTextField Jmostrar2;
-    private javax.swing.JTextField Jmostrar3;
+    public static javax.swing.JTextField Jmostrar1;
+    public static javax.swing.JTextField Jmostrar2;
+    public static javax.swing.JTextField Jmostrar3;
     private javax.swing.JButton Jugar;
     private javax.swing.JButton Save;
     private javax.swing.JButton jButton3Reportes;
-    private javax.swing.JLabel jLabel1;
+    public static javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jlNickname;
-    private javax.swing.JTextField nickname;
-    private javax.swing.JTextField v_1;
-    private javax.swing.JTextField v_2;
-    private javax.swing.JTextField v_3;
+    public static javax.swing.JTextField nickname;
+    public static javax.swing.JTextField v_1;
+    public static javax.swing.JTextField v_2;
+    public static javax.swing.JTextField v_3;
     // End of variables declaration//GEN-END:variables
 
 }

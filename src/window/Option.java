@@ -94,6 +94,7 @@ public class Option extends javax.swing.JFrame {
 
     private void BCargarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BCargarActionPerformed
         this.setVisible(false);
+        new Save_Partidas().setVisible(true);
        // new interfaz().setVisible(true);
         // TODO add your handling code here:
     }//GEN-LAST:event_BCargarActionPerformed

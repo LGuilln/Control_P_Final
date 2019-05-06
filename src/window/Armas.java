@@ -6,8 +6,17 @@
 package window;
 
 import clases.Armas_C;
+import clases.Persona;
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.ObjectOutputStream;
 import java.util.ArrayList;
 import java.util.LinkedList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import static window.Bienvenida.pathArmas;
+import static window.Armas.contenedor;
 /**
  *
  * @author luedu
@@ -15,6 +24,10 @@ import java.util.LinkedList;
 public class Armas extends javax.swing.JFrame {
 
     public static LinkedList contenedor = new LinkedList();
+
+    static String getText() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
     public int buscar;
   
     /**
@@ -25,6 +38,30 @@ public class Armas extends javax.swing.JFrame {
         this.setLocationRelativeTo(null);
 
     }
+    
+      public void createBin(){
+        ObjectOutputStream binario = null;
+        try {
+            String nameFile = Arma.getText();
+            File file = new File(nameFile);
+            Armas arma = (Armas) contenedor.getLast();
+           
+            binario = new ObjectOutputStream(new FileOutputStream(pathArmas+arma.getArma()+".arm"));
+            binario.writeObject(arma);
+            
+        } catch (Exception ex) {
+            ex.printStackTrace();
+           // Logger.getLogger(Registro.class.getName()).log(Level.SEVERE, null, ex);
+        } finally {
+            try {
+                binario.close();
+            } catch (IOException ex) {
+                Logger.getLogger(Armas.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+        
+    }
+   
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -93,6 +130,11 @@ public class Armas extends javax.swing.JFrame {
 
         Arma.setFont(new java.awt.Font("Arial", 0, 20)); // NOI18N
         Arma.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        Arma.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ArmaActionPerformed(evt);
+            }
+        });
         getContentPane().add(Arma, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 90, 340, 30));
 
         N_Daño.setBackground(new java.awt.Color(0, 0, 204));
@@ -192,6 +234,10 @@ public class Armas extends javax.swing.JFrame {
         Precio.setText("");
         
         
+        Armas a = (Armas)contenedor.getLast();
+        createBin();
+        
+        
         // TODO add your handling code here:
     }//GEN-LAST:event_GArmasActionPerformed
 
@@ -217,6 +263,10 @@ public class Armas extends javax.swing.JFrame {
     
         // TODO add your handling code here:
     }//GEN-LAST:event_Ver_ArmasActionPerformed
+
+    private void ArmaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ArmaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_ArmaActionPerformed
 
     /**
      * @param args the command line arguments
@@ -269,19 +319,23 @@ public class Armas extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JTextField Arma;
+    public static javax.swing.JTextField Arma;
     private javax.swing.JButton Bback;
-    private javax.swing.JTextField Daño;
+    public static javax.swing.JTextField Daño;
     private javax.swing.JButton GArmas;
     private javax.swing.JLabel N_Arma;
     private javax.swing.JLabel N_Daño;
     private javax.swing.JLabel N_Precio;
     private javax.swing.JLabel N_Presicion;
     private javax.swing.JLabel N_Velocidad;
-    private javax.swing.JTextField Precio;
-    private javax.swing.JTextField Presicion;
-    private javax.swing.JTextField Velocidad;
+    public static javax.swing.JTextField Precio;
+    public static javax.swing.JTextField Presicion;
+    public static javax.swing.JTextField Velocidad;
     private javax.swing.JButton Ver_Armas;
     private javax.swing.JLabel jLabel1;
     // End of variables declaration//GEN-END:variables
+
+    private String getArma() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
 }

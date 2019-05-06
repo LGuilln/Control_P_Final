@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package ClasesdelProyecto;
+package clases;
 
 import javax.swing.JButton;
 
@@ -12,6 +12,21 @@ import javax.swing.JButton;
  * @author danie
  */
 public class Casilla extends JButton {
+    
+    private Usuario usuario;
+    
+    
+    
+
+    public Usuario getUsuario() {
+        return usuario;
+    }
+
+    public void setUsuario(Usuario usuario) {
+        this.usuario = usuario;
+    }
+    
+    
 
  
 

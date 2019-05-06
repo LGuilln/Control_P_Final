@@ -6,9 +6,17 @@
 package window;
 
 import clases.Armas_C;
+import clases.Persona;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
-
+import static window.Bienvenida.pathArmas;
+import static window.Armas.contenedor;
 /**
  *
  * @author danie
@@ -42,6 +50,43 @@ public void CargarRegistrar(){
     jTableArmas.setModel(modelo);
     
 }
+
+   public void readBin(){
+        contenedor.clear();
+        ObjectInputStream binario = null;
+        try {
+            String nameFile = Armas.getText();
+            File file = new File("Arma");
+            
+            
+            
+            for (String string : file.list()) {
+                
+                binario = new ObjectInputStream(new FileInputStream(pathArmas+string));
+                Armas a = (Armas) binario.readObject();
+                contenedor.add(a);
+                
+            }
+            
+            
+            
+            
+        } catch (Exception ex) {
+            ex.printStackTrace();
+           // Logger.getLogger(Registro.class.getName()).log(Level.SEVERE, null, ex);
+        } finally {
+            try {
+                binario.close();
+            } catch (IOException ex) {
+                Logger.getLogger(Registro.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+        
+    }
+ 
+
+
+
             public void Cargardatos(){
                 Armas_C b;
                 for (int i = 0; i < Armas.contenedor.size(); i++) {

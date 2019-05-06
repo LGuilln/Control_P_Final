@@ -5,15 +5,24 @@
  */
 package clases;
 
-import java.awt.Color;
-
 /**
  *
  * @author danie
  */
-public class CasillaTerreno extends Casilla{
-    public CasillaTerreno(){
-        this.setBackground(Color.white);
+public class Usuario {
+
+    private final String nombre;
+/**
+ * Constructor de clase Usuario
+ * @param nombre 
+ */
+    public Usuario(String nombre) {
+        
+        this.nombre = nombre;
     }
+    
+    
+    
+    
     
 }

@@ -5,11 +5,15 @@
  */
 package clases;
 
+import java.io.Serializable;
+
 /**
  *
  * @author luedu
  */
-public class Armas_C {
+public class Armas_C implements Serializable {
+    
+    
     String N_Arma;
     String N_Daño;
     String N_Presicion;

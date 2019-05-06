@@ -8,12 +8,17 @@ package window;
 import clases.Persona;
 import java.io.BufferedWriter;
 import java.io.File;
+import java.io.FileInputStream;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.io.ObjectInputStream;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
+import static window.Bienvenida.pathPersona;
+import static window.Registro.contenedor;
+import static window.Registro.nickname;
 
 /**
  *
@@ -32,6 +37,7 @@ public class Estadisticas extends javax.swing.JFrame {
         initComponents();
         this.setLocationRelativeTo(null);
         setSize(1290, 1000);
+        readBin();
         CargarRegistrar();
         Cargardatos();
     }
@@ -48,6 +54,41 @@ public void CargarRegistrar(){
     jTableEstadisticas.setModel(modelo);
     
 }
+
+ 
+    public void readBin(){
+        contenedor.clear();
+        ObjectInputStream binario = null;
+        try {
+            String nameFile = nickname.getText();
+            File file = new File("Persona");
+            
+            
+            
+            for (String string : file.list()) {
+                
+                binario = new ObjectInputStream(new FileInputStream(pathPersona+string));
+                Persona p = (Persona) binario.readObject();
+                contenedor.add(p);
+                
+            }
+            
+            
+            
+            
+        } catch (Exception ex) {
+            ex.printStackTrace();
+           // Logger.getLogger(Registro.class.getName()).log(Level.SEVERE, null, ex);
+        } finally {
+            try {
+                binario.close();
+            } catch (IOException ex) {
+                Logger.getLogger(Registro.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+        
+    }
+    
             public void Cargardatos(){
                 Persona a;
                 for (int i = 0; i < Registro.contenedor.size(); i++) {

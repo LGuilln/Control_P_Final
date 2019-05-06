@@ -5,6 +5,8 @@
  */
 package window;
 
+import java.io.File;
+
 /**
  *
  * @author luedu
@@ -118,15 +120,46 @@ public class Bienvenida extends javax.swing.JFrame {
         }
         //</editor-fold>
         //</editor-fold>
+        File createCarpeta = new File("Persona");
+        
+        if (!createCarpeta.exists()) {
+            createCarpeta.mkdir();
+            
+        }
+        pathPersona = createCarpeta.getAbsolutePath()+File.separatorChar;
+                
 
+        
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new Bienvenida().setVisible(true);
             }
         });
-    }
+    
+        
+   
+        
+        /*/ File createCarpetas = new File("Armas");
+        
+        if (!createCarpetas.exists()) {
+            createCarpetas.mkdir();
+            }
+        pathArmas = createCarpetas.getAbsolutePath()+File.separatorChar;
+                
 
+        
+        java.awt.EventQueue.invokeLater(new Runnable() {
+            public void run() {
+                new Bienvenida().setVisible(true);
+            }
+        });
+       */
+        
+    }
+    public static String pathArmas;
+    public static String pathAviones;
+    public static String pathPersona;
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton BJugar;
     private javax.swing.JButton BReportes;

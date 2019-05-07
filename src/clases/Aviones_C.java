@@ -5,11 +5,13 @@
  */
 package clases;
 
+import java.io.Serializable;
+
 /**
  *
  * @author luedu
  */
-public class Aviones_C {
+public class Aviones_C implements Serializable {
     String N_Avion;
     String N_Presicion;
     String N_Ataque;
@@ -74,7 +76,6 @@ public class Aviones_C {
         this.N_Precio = N_Precio;
 
     }
-    
-    
+
         
 }

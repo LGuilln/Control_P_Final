@@ -7,9 +7,17 @@ package window;
 
 
 import clases.Aviones_C;
-import clases.Tanques_C;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
+import static window.Aviones.contenedor_avion;
+import static window.Aviones.nombre_avion;
+import static window.Bienvenida.pathAviones;
 
 /**
  *
@@ -28,13 +36,14 @@ public class T_Aviones extends javax.swing.JFrame {
         initComponents();
         this.setLocationRelativeTo(null);
         setSize(1290, 1000);
+        readBinario();
         CargarRegistrar();
         Cargardatos();
+        
     }
 public void CargarRegistrar(){
     String datos [][]= {};
     String columna[]= {"Avion", "Presicion","Ataque", "Defensa", "Velocidad", "Precio"};
-    String columna1[] = { "Avion" };
     
     
         
@@ -44,10 +53,45 @@ public void CargarRegistrar(){
     jTableAviones.setModel(modelo);
     
 }
+
+
+    public void readBinario(){
+        contenedor_avion.clear();
+        ObjectInputStream binario = null;
+        try {
+            String nameFile = nombre_avion.getText();
+            File file_av = new File("Aviones");
+            
+            
+            
+            for (String string2:file_av.list()) {
+                
+                binario = new ObjectInputStream(new FileInputStream(pathAviones+string2));
+                Aviones_C av = (Aviones_C) binario.readObject();
+                contenedor_avion.add(av);
+                
+            }
+            
+            
+            
+            
+        } catch (Exception ext) {
+            ext.printStackTrace();
+           // Logger.getLogger(Registro.class.getName()).log(Level.SEVERE, null, ex);
+        } finally {
+            try {
+                binario.close();
+            } catch (IOException ext) {
+                Logger.getLogger(Aviones.class.getName()).log(Level.SEVERE, null, ext);
+            }
+        }
+        
+    }
+    
             public void Cargardatos(){
                 Aviones_C c;
-                for (int i = 0; i < Aviones.contenedor.size(); i++) {
-                    c= (Aviones_C)Aviones.contenedor.get(i);
+                for (int i = 0; i < Aviones.contenedor_avion.size(); i++) {
+                    c= (Aviones_C)Aviones.contenedor_avion.get(i);
                     modelo.insertRow(cont, new Object []{ });
                     modelo.setValueAt(c.getAvion(), cont, 0);
                     modelo.setValueAt(c.getPresicion(), cont, 1);

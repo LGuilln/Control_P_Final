@@ -51,8 +51,8 @@ public void CargarRegistrar(){
 }
             public void Cargardatos(){
                 Persona a;
-                for (int i = 0; i < Registro.contenedor.size(); i++) {
-                    a= (Persona)Registro.contenedor.get(i);
+                for (int i = 0; i < Registro.list.size(); i++) {
+                    a= (Persona)Registro.list.get(i);
                     modelo.insertRow(cont, new Object []{ });
                     modelo.setValueAt(a.getNombre(), cont, 0);
                     modelo.setValueAt(a.getTipo1(), cont, 1);

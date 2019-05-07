@@ -20,6 +20,12 @@ public class Armas_C implements Serializable {
     String N_Velocidad;
     String N_Precio;
 
+  
+  //  public Armas_C(String N_Arma, String N_Presicion, String N_Daño, String N_Velocidad, String N_Precio) {
+      //  throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    //}
+
+   
     public String getArma() {
         return N_Arma;
     }
@@ -66,6 +72,6 @@ public class Armas_C implements Serializable {
         this.N_Velocidad = N_Velocidad;
         this.N_Precio = N_Precio;
 
-    }
-        
+          
+}
 }

@@ -6,28 +6,26 @@
 package window;
 
 import clases.Armas_C;
-import clases.Persona;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.ObjectOutputStream;
 import java.util.LinkedList;
+import java.util.Formatter;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import static window.Armas.Arma;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import static window.Bienvenida.pathArmas;
-import static window.Armas.contenedor;
+import static window.Armas.contenedor_armas;
+import static window.Armas.nombre_arma;
 /**
  *
  * @author luedu
  */
 public class Armas extends javax.swing.JFrame {
 
-    public static LinkedList contenedor = new LinkedList();
-
-    static String getText() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
+    public static LinkedList contenedor_armas = new LinkedList();
     public int buscar;
   
     /**
@@ -39,15 +37,15 @@ public class Armas extends javax.swing.JFrame {
 
     }
     
-      public void createBin1(){
+      public void createBin(){
         ObjectOutputStream binario = null;
         try {
-            String nameFile = Arma.getText();
+            String nameFile = nombre_arma.getText();
             File file = new File(nameFile);
-            Armas arma = (Armas) contenedor.getLast();
+            Armas_C gun = (Armas_C) contenedor_armas.getLast();
            
-            binario = new ObjectOutputStream(new FileOutputStream(pathArmas+arma.getArma()+".arm"));
-            binario.writeObject(arma);
+            binario = new ObjectOutputStream(new FileOutputStream(pathArmas+gun.getArma()+".arm"));
+            binario.writeObject(gun);
             
         } catch (Exception ex) {
             ex.printStackTrace();
@@ -76,7 +74,7 @@ public class Armas extends javax.swing.JFrame {
         Bback = new javax.swing.JButton();
         GArmas = new javax.swing.JButton();
         N_Arma = new javax.swing.JLabel();
-        Arma = new javax.swing.JTextField();
+        nombre_arma = new javax.swing.JTextField();
         N_Daño = new javax.swing.JLabel();
         Daño = new javax.swing.JTextField();
         N_Velocidad = new javax.swing.JLabel();
@@ -128,14 +126,14 @@ public class Armas extends javax.swing.JFrame {
         N_Arma.setAutoscrolls(true);
         getContentPane().add(N_Arma, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 80, -1, -1));
 
-        Arma.setFont(new java.awt.Font("Arial", 0, 20)); // NOI18N
-        Arma.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        Arma.addActionListener(new java.awt.event.ActionListener() {
+        nombre_arma.setFont(new java.awt.Font("Arial", 0, 20)); // NOI18N
+        nombre_arma.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        nombre_arma.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                ArmaActionPerformed(evt);
+                nombre_armaActionPerformed(evt);
             }
         });
-        getContentPane().add(Arma, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 90, 340, 30));
+        getContentPane().add(nombre_arma, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 90, 340, 30));
 
         N_Daño.setBackground(new java.awt.Color(0, 0, 204));
         N_Daño.setFont(new java.awt.Font("Arial Black", 0, 24)); // NOI18N
@@ -214,7 +212,7 @@ public class Armas extends javax.swing.JFrame {
 
     private void GArmasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_GArmasActionPerformed
       
-        String N_Arma = Arma.getText();
+        String N_Arma = nombre_arma.getText();
         String N_Presicion = Presicion.getText();
         String N_Daño = Daño.getText();
         String N_Velocidad = Velocidad.getText();
@@ -222,8 +220,18 @@ public class Armas extends javax.swing.JFrame {
   
         
         
-        Armas a = (Armas)contenedor.getLast();
-        createBin1();
+        Armas_C  arm = new Armas_C(N_Arma, N_Presicion, N_Daño, N_Velocidad, N_Precio);
+        contenedor_armas.add(arm);
+        //Limpia
+        nombre_arma.setText("");
+        Presicion.setText("");
+        Daño.setText("");
+        Velocidad.setText("");
+        Precio.setText("");
+     
+        
+        Armas_C armm = (Armas_C)contenedor_armas.getLast();
+        createBin();
         
         
         // TODO add your handling code here:
@@ -246,15 +254,21 @@ public class Armas extends javax.swing.JFrame {
     }//GEN-LAST:event_PresicionActionPerformed
 
     private void Ver_ArmasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Ver_ArmasActionPerformed
+     
+      Armas principa2 = new Armas();
+      principa2.show();
+      principa2.setVisible(false);
+      
+        
         this.setVisible(false);
         new T_Armas().setVisible(true);// TODO add your handling code here:
     
         // TODO add your handling code here:
     }//GEN-LAST:event_Ver_ArmasActionPerformed
 
-    private void ArmaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ArmaActionPerformed
+    private void nombre_armaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nombre_armaActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_ArmaActionPerformed
+    }//GEN-LAST:event_nombre_armaActionPerformed
 
     /**
      * @param args the command line arguments
@@ -307,7 +321,6 @@ public class Armas extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    public static javax.swing.JTextField Arma;
     private javax.swing.JButton Bback;
     public static javax.swing.JTextField Daño;
     private javax.swing.JButton GArmas;
@@ -321,6 +334,7 @@ public class Armas extends javax.swing.JFrame {
     public static javax.swing.JTextField Velocidad;
     private javax.swing.JButton Ver_Armas;
     private javax.swing.JLabel jLabel1;
+    public static javax.swing.JTextField nombre_arma;
     // End of variables declaration//GEN-END:variables
 
     private String getArma() {

@@ -6,7 +6,6 @@
 package window;
 
 import clases.Armas_C;
-import clases.Persona;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
@@ -16,7 +15,8 @@ import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import static window.Bienvenida.pathArmas;
-import static window.Armas.contenedor;
+import static window.Armas.contenedor_armas;
+import static window.Armas.nombre_arma;
 /**
  *
  * @author danie
@@ -34,8 +34,10 @@ public class T_Armas extends javax.swing.JFrame {
         initComponents();
         this.setLocationRelativeTo(null);
         setSize(1290, 1000);
+        readBin();
         CargarRegistrar();
         Cargardatos();
+        
     }
 public void CargarRegistrar(){
     String datos [][]= {};
@@ -51,20 +53,20 @@ public void CargarRegistrar(){
     
 }
 
-   public void readBin1(){
-        contenedor.clear();
+   public void readBin(){
+        contenedor_armas.clear();
         ObjectInputStream binario = null;
         try {
-            String nameFile = Armas.getText();
-            File file = new File("Arma");
+            String nameFile1 = nombre_arma.getText();
+            File file1 = new File("Arma");
             
             
             
-            for (String string : file.list()) {
+            for (String string1 : file1.list()) {
                 
-                binario = new ObjectInputStream(new FileInputStream(pathArmas+string));
-                Armas a = (Armas) binario.readObject();
-                contenedor.add(a);
+                binario = new ObjectInputStream(new FileInputStream(pathArmas+string1));
+                Armas_C arm = (Armas_C) binario.readObject();
+                contenedor_armas.add(arm);
                 
             }
             
@@ -82,15 +84,10 @@ public void CargarRegistrar(){
             }
         }
         
-    }
- 
-
-
-
-            public void Cargardatos(){
+    }    public void Cargardatos(){
                 Armas_C b;
-                for (int i = 0; i < Armas.contenedor.size(); i++) {
-                    b= (Armas_C)Armas.contenedor.get(i);
+                for (int i = 0; i < Armas.contenedor_armas.size(); i++) {
+                    b= (Armas_C)Armas.contenedor_armas.get(i);
                     modelo.insertRow(cont, new Object []{ });
                     modelo.setValueAt(b.getArma(), cont, 0);
                     modelo.setValueAt(b.getPresicion(), cont, 1);
@@ -201,7 +198,7 @@ public void CargarRegistrar(){
         ));
         jScrollPane1.setViewportView(jTableArmas);
 
-        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 120, 950, 630));
+        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 120, 950, 630));
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/Descargar Pack Fondos de Pantalla Mejores juegos (310)4.jpg"))); // NOI18N
         getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 10, -1, -1));
@@ -313,7 +310,7 @@ public void CargarRegistrar(){
     private javax.swing.JLabel jLabel2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JTable jTableArmas;
+    public static javax.swing.JTable jTableArmas;
     private javax.swing.JTable jTableEstadisticas1;
     // End of variables declaration//GEN-END:variables
 }

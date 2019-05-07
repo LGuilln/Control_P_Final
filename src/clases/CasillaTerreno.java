@@ -13,7 +13,7 @@ import java.awt.Color;
  */
 public class CasillaTerreno extends Casilla{
     public CasillaTerreno(){
-        this.setBackground(Color.white);
+        this.setBackground(Color.gray);
     }
     
 }

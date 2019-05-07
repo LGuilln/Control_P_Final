@@ -6,8 +6,15 @@
 package window;
 
 import clases.Aviones_C;
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.ObjectOutputStream;
 import java.util.LinkedList;
 import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import static window.Bienvenida.pathAviones;
 /**
 import static window.Tanques.contenedor;
 
@@ -17,7 +24,7 @@ import static window.Tanques.contenedor;
  */
 public class Aviones extends javax.swing.JFrame {
     
-    public static LinkedList contenedor = new LinkedList();
+    public static LinkedList contenedor_avion = new LinkedList();
     public int buscar;
   
 
@@ -29,6 +36,29 @@ public class Aviones extends javax.swing.JFrame {
         this.setLocationRelativeTo(null);
 
     }
+      public void createBin(){
+        ObjectOutputStream binario = null;
+        try {
+            String nameFile = nombre_avion.getText();
+            File file = new File(nameFile);
+            Aviones_C Airplane = (Aviones_C) contenedor_avion.getLast();
+           
+            binario = new ObjectOutputStream(new FileOutputStream(pathAviones+Airplane.getAvion()+".avion"));
+            binario.writeObject(Airplane);
+            
+        } catch (Exception ex) {
+            ex.printStackTrace();
+           // Logger.getLogger(Registro.class.getName()).log(Level.SEVERE, null, ex);
+        } finally {
+            try {
+                binario.close();
+            } catch (IOException ex) {
+                Logger.getLogger(Aviones.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+        
+    }
+  
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -40,10 +70,11 @@ public class Aviones extends javax.swing.JFrame {
     private void initComponents() {
 
         Ver_Aviones = new javax.swing.JButton();
+        Binario = new javax.swing.JButton();
         Bback = new javax.swing.JButton();
         GAviones = new javax.swing.JButton();
         N_Arma = new javax.swing.JLabel();
-        Avion = new javax.swing.JTextField();
+        nombre_avion = new javax.swing.JTextField();
         N_Ataque = new javax.swing.JLabel();
         Ataque = new javax.swing.JTextField();
         N_Defensa = new javax.swing.JLabel();
@@ -70,6 +101,16 @@ public class Aviones extends javax.swing.JFrame {
             }
         });
         getContentPane().add(Ver_Aviones, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 690, 130, 50));
+
+        Binario.setBackground(new java.awt.Color(102, 255, 0));
+        Binario.setFont(new java.awt.Font("Arial Black", 1, 18)); // NOI18N
+        Binario.setText("Log");
+        Binario.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BinarioActionPerformed(evt);
+            }
+        });
+        getContentPane().add(Binario, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 600, 100, 50));
 
         Bback.setBackground(new java.awt.Color(102, 255, 0));
         Bback.setFont(new java.awt.Font("Arial Black", 1, 18)); // NOI18N
@@ -98,9 +139,9 @@ public class Aviones extends javax.swing.JFrame {
         N_Arma.setAutoscrolls(true);
         getContentPane().add(N_Arma, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 80, -1, -1));
 
-        Avion.setFont(new java.awt.Font("Arial", 0, 20)); // NOI18N
-        Avion.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        getContentPane().add(Avion, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 90, 340, 30));
+        nombre_avion.setFont(new java.awt.Font("Arial", 0, 20)); // NOI18N
+        nombre_avion.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        getContentPane().add(nombre_avion, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 90, 340, 30));
 
         N_Ataque.setBackground(new java.awt.Color(0, 0, 204));
         N_Ataque.setFont(new java.awt.Font("Arial Black", 0, 24)); // NOI18N
@@ -198,7 +239,7 @@ public class Aviones extends javax.swing.JFrame {
 
     private void GAvionesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_GAvionesActionPerformed
     
-        String N_Tanque = Avion.getText();
+        String N_Tanque = nombre_avion.getText();
         String N_Presicion = Presicion.getText();
         String N_Ataque = Ataque.getText();
         String N_Defensa = Defensa.getText();
@@ -211,14 +252,18 @@ public class Aviones extends javax.swing.JFrame {
         //NOMBRE DE LA PERSONA ATRUBUTOS
       
         Aviones_C av  = new Aviones_C (N_Tanque, N_Presicion,N_Ataque, N_Defensa, N_Velocidad, N_Precio);
-        contenedor.add(av);
+        contenedor_avion.add(av);
         //Limpia
-        Avion.setText("");
+        nombre_avion.setText("");
         Presicion.setText("");
         Ataque.setText("");
         Defensa.setText("");
         Velocidad.setText("");
         Precio.setText("");
+        
+        Aviones_C p = (Aviones_C)contenedor_avion.getLast();
+        createBin();
+// TODO
         
         // TODO add your handling code here:
     }//GEN-LAST:event_GAvionesActionPerformed
@@ -249,6 +294,10 @@ public class Aviones extends javax.swing.JFrame {
 
         // TODO add your handling code here:
     }//GEN-LAST:event_Ver_AvionesActionPerformed
+
+    private void BinarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BinarioActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_BinarioActionPerformed
 
     /**
      * @param args the command line arguments
@@ -349,10 +398,10 @@ public class Aviones extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JTextField Ataque;
-    private javax.swing.JTextField Avion;
+    public static javax.swing.JTextField Ataque;
     private javax.swing.JButton Bback;
-    private javax.swing.JTextField Defensa;
+    private javax.swing.JButton Binario;
+    public static javax.swing.JTextField Defensa;
     private javax.swing.JButton GAviones;
     private javax.swing.JLabel N_Arma;
     private javax.swing.JLabel N_Ataque;
@@ -360,11 +409,12 @@ public class Aviones extends javax.swing.JFrame {
     private javax.swing.JLabel N_Precio;
     private javax.swing.JLabel N_Presicion;
     private javax.swing.JLabel N_Velocidad;
-    private javax.swing.JTextField Precio;
-    private javax.swing.JTextField Presicion;
-    private javax.swing.JTextField Velocidad;
+    public static javax.swing.JTextField Precio;
+    public static javax.swing.JTextField Presicion;
+    public static javax.swing.JTextField Velocidad;
     private javax.swing.JButton Ver_Aviones;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    public static javax.swing.JTextField nombre_avion;
     // End of variables declaration//GEN-END:variables
 }

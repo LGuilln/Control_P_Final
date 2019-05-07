@@ -29,7 +29,7 @@ import static window.Bienvenida.pathPersona;
  */
 public class Registro extends javax.swing.JFrame {
 
-    public static LinkedList contenedor = new LinkedList();
+    public static LinkedList list = new LinkedList();
     public int buscar;
 
 //     String barra = File.separator;
@@ -84,7 +84,7 @@ public class Registro extends javax.swing.JFrame {
         try {
             String nameFile = nickname.getText();
             File file = new File(nameFile);
-            Persona persona = (Persona) contenedor.getLast();
+            Persona persona = (Persona) list.getLast();
            
             binario = new ObjectOutputStream(new FileOutputStream(pathPersona+persona.getNombre()+".person"));
             binario.writeObject(persona);
@@ -340,15 +340,15 @@ public class Registro extends javax.swing.JFrame {
      String tipo3 = M_3.getText();
      
         //NOMBRE DE LA PERSONA ATRUBUTOS
-        Persona  person = new Persona(nombre, v1, v2, v3, tipo1, tipo2, tipo3);
-        contenedor.add(person);
+       Persona  person = new Persona(nombre, v1, v2, v3, tipo1, tipo2, tipo3);
+        list.add(person);
         //Limpia
         nickname.setText("");
         v_1.setText("");
         v_2.setText("");
         v_3.setText("");
      
-        Persona p = (Persona)contenedor.getLast();
+        Persona p = (Persona)list.getLast();
         createBin();
 // TODO add your handling code here:
     }//GEN-LAST:event_SaveActionPerformed

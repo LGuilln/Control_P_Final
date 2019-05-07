@@ -7,7 +7,7 @@ package window;
 
 import clases.Persona;
 import java.io.File;
-import static window.Registro.contenedor;
+import static window.Registro.list;
 
 /**
  *
@@ -131,7 +131,8 @@ public class Bienvenida extends javax.swing.JFrame {
         //</editor-fold>
         File createCarpeta = new File("Persona");
         
-        File createCarpetas = new File("Armas");
+        File createCarpeta1 = new File("Armas");
+        File createCarpeta2 = new File("Aviones");
         
         if (!createCarpeta.exists()) {
             createCarpeta.mkdir();
@@ -139,7 +140,9 @@ public class Bienvenida extends javax.swing.JFrame {
         }
         
         pathPersona = createCarpeta.getAbsolutePath()+File.separatorChar;
-        pathArmas = createCarpetas.getAbsolutePath()+File.separatorChar;
+        pathArmas = createCarpeta1.getAbsolutePath()+File.separatorChar;
+        pathAviones = createCarpeta2.getAbsolutePath()+File.separatorChar;
+        
         
         
         

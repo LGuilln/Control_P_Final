@@ -93,9 +93,19 @@ public class Option extends javax.swing.JFrame {
     }//GEN-LAST:event_BNuevoActionPerformed
 
     private void BCargarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BCargarActionPerformed
-        this.setVisible(false);
-        new Save_Partidas().setVisible(true);
-       // new interfaz().setVisible(true);
+        
+      Registro principa2 = new Registro();
+      principa2.show();
+      principa2.setVisible(false);
+      
+      Estadisticas principa3 = new Estadisticas();
+      principa3.show();
+      principa3.setVisible(false);
+      
+      
+      Save_Partidas principal = new Save_Partidas();
+      principal.show();
+      this.setVisible(false); 
         // TODO add your handling code here:
     }//GEN-LAST:event_BCargarActionPerformed
 

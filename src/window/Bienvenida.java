@@ -5,7 +5,9 @@
  */
 package window;
 
+import clases.Persona;
 import java.io.File;
+import static window.Registro.contenedor;
 
 /**
  *
@@ -83,8 +85,15 @@ public class Bienvenida extends javax.swing.JFrame {
     }//GEN-LAST:event_BJugarActionPerformed
 
     private void BReportesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BReportesActionPerformed
-        this.setVisible(false);
-       // new interfaz().setVisible(true);
+       
+      Registro principa2 = new Registro();
+      principa2.show();
+      principa2.setVisible(false);
+       
+      Estadisticas principal = new Estadisticas();
+      principal.show();
+      this.setVisible(false); 
+       
         // TODO add your handling code here:
     }//GEN-LAST:event_BReportesActionPerformed
 
@@ -122,13 +131,17 @@ public class Bienvenida extends javax.swing.JFrame {
         //</editor-fold>
         File createCarpeta = new File("Persona");
         
+        File createCarpetas = new File("Armas");
+        
         if (!createCarpeta.exists()) {
             createCarpeta.mkdir();
             
         }
+        
         pathPersona = createCarpeta.getAbsolutePath()+File.separatorChar;
-                
-
+        pathArmas = createCarpetas.getAbsolutePath()+File.separatorChar;
+        
+        
         
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
@@ -140,21 +153,11 @@ public class Bienvenida extends javax.swing.JFrame {
         
    
         
-        /*/ File createCarpetas = new File("Armas");
-        
-        if (!createCarpetas.exists()) {
-            createCarpetas.mkdir();
-            }
-        pathArmas = createCarpetas.getAbsolutePath()+File.separatorChar;
                 
 
         
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new Bienvenida().setVisible(true);
-            }
-        });
-       */
+        
+       
         
     }
     public static String pathArmas;

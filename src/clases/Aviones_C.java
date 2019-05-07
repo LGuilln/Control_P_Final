@@ -74,5 +74,7 @@ public class Aviones_C {
         this.N_Precio = N_Precio;
 
     }
+    
+    
         
 }

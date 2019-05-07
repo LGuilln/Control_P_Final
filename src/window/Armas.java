@@ -11,10 +11,10 @@ import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.ObjectOutputStream;
-import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import static window.Armas.Arma;
 import static window.Bienvenida.pathArmas;
 import static window.Armas.contenedor;
 /**
@@ -39,7 +39,7 @@ public class Armas extends javax.swing.JFrame {
 
     }
     
-      public void createBin(){
+      public void createBin1(){
         ObjectOutputStream binario = null;
         try {
             String nameFile = Arma.getText();
@@ -220,22 +220,10 @@ public class Armas extends javax.swing.JFrame {
         String N_Velocidad = Velocidad.getText();
         String N_Precio = Precio.getText();
   
-    
-    
-   
-        //NOMBRE DE LA PERSONA ATRUBUTOS
-        Armas_C  arm = new Armas_C(N_Arma, N_Presicion, N_Daño, N_Velocidad, N_Precio);
-        contenedor.add(arm);
-        //Limpia
-        Arma.setText("");
-        Presicion.setText("");
-        Daño.setText("");
-        Velocidad.setText("");
-        Precio.setText("");
         
         
         Armas a = (Armas)contenedor.getLast();
-        createBin();
+        createBin1();
         
         
         // TODO add your handling code here:
@@ -338,4 +326,5 @@ public class Armas extends javax.swing.JFrame {
     private String getArma() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
+
 }

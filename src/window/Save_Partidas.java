@@ -77,7 +77,7 @@ public void CargarRegistrar(){
 
         jButtonBack1 = new javax.swing.JButton();
         jButtonDelete = new javax.swing.JButton();
-        jButtonJugar = new javax.swing.JButton();
+        jButtonCargar = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
         Import = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
@@ -128,24 +128,24 @@ public void CargarRegistrar(){
         });
         getContentPane().add(jButtonDelete, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 800, -1, -1));
 
-        jButtonJugar.setBackground(new java.awt.Color(255, 255, 51));
-        jButtonJugar.setFont(new java.awt.Font("Arial Black", 0, 22)); // NOI18N
-        jButtonJugar.setText("Cargar");
-        jButtonJugar.addAncestorListener(new javax.swing.event.AncestorListener() {
+        jButtonCargar.setBackground(new java.awt.Color(255, 255, 51));
+        jButtonCargar.setFont(new java.awt.Font("Arial Black", 0, 22)); // NOI18N
+        jButtonCargar.setText("Cargar");
+        jButtonCargar.addAncestorListener(new javax.swing.event.AncestorListener() {
             public void ancestorMoved(javax.swing.event.AncestorEvent evt) {
             }
             public void ancestorAdded(javax.swing.event.AncestorEvent evt) {
-                jButtonJugarAncestorAdded(evt);
+                jButtonCargarAncestorAdded(evt);
             }
             public void ancestorRemoved(javax.swing.event.AncestorEvent evt) {
             }
         });
-        jButtonJugar.addActionListener(new java.awt.event.ActionListener() {
+        jButtonCargar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonJugarActionPerformed(evt);
+                jButtonCargarActionPerformed(evt);
             }
         });
-        getContentPane().add(jButtonJugar, new org.netbeans.lib.awtextra.AbsoluteConstraints(860, 800, 120, -1));
+        getContentPane().add(jButtonCargar, new org.netbeans.lib.awtextra.AbsoluteConstraints(860, 800, 120, -1));
 
         jLabel2.setFont(new java.awt.Font("Arial Black", 0, 36)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(0, 255, 0));
@@ -225,25 +225,25 @@ public void CargarRegistrar(){
         // TODO add your handling code here:
     }//GEN-LAST:event_jButtonDeleteActionPerformed
 
-    private void jButtonJugarAncestorAdded(javax.swing.event.AncestorEvent evt) {//GEN-FIRST:event_jButtonJugarAncestorAdded
+    private void jButtonCargarAncestorAdded(javax.swing.event.AncestorEvent evt) {//GEN-FIRST:event_jButtonCargarAncestorAdded
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButtonJugarAncestorAdded
+    }//GEN-LAST:event_jButtonCargarAncestorAdded
 
-    private void jButtonJugarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonJugarActionPerformed
+    private void jButtonCargarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCargarActionPerformed
         this.setVisible(false);
         Registro R = new Registro();
         int fila = jTableEstadisticas.getSelectedRow();
         Registro.nickname.setText(jTableEstadisticas.getValueAt(fila,0).toString());
-        Registro.Jmostrar1.setText(jTableEstadisticas.getValueAt(fila,1).toString());
+        Registro.M_1.setText(jTableEstadisticas.getValueAt(fila,1).toString());
 
        // Registro.CB2.setText(jTableEstadisticas.getValueAt(fila,1).toString());
       // Registro.CB1.removeAllItems(); 
        //Registro.CB1.addItem(jTableEstadisticas.getValueAt(fila,1).toString());
                 
         Registro.v_1.setText(jTableEstadisticas.getValueAt(fila,2).toString());
-        Registro.Jmostrar2.setText(jTableEstadisticas.getValueAt(fila,3).toString());
+        Registro.M_2.setText(jTableEstadisticas.getValueAt(fila,3).toString());
         Registro.v_2.setText(jTableEstadisticas.getValueAt(fila,4).toString());
-        Registro.Jmostrar3.setText(jTableEstadisticas.getValueAt(fila,5).toString());
+        Registro.M_3.setText(jTableEstadisticas.getValueAt(fila,5).toString());
         Registro.v_3.setText(jTableEstadisticas.getValueAt(fila,6).toString());
         
         R.show();
@@ -251,7 +251,7 @@ public void CargarRegistrar(){
        // new NewJFrame().setVisible(true);
 
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButtonJugarActionPerformed
+    }//GEN-LAST:event_jButtonCargarActionPerformed
 
     private void ImportActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ImportActionPerformed
         
@@ -322,8 +322,8 @@ public void CargarRegistrar(){
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton Import;
     private javax.swing.JButton jButtonBack1;
+    private javax.swing.JButton jButtonCargar;
     private javax.swing.JButton jButtonDelete;
-    private javax.swing.JButton jButtonJugar;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JScrollPane jScrollPane1;

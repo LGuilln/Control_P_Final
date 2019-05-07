@@ -398,7 +398,7 @@
         </Constraint>
       </Constraints>
     </Component>
-    <Component class="javax.swing.JTextField" name="Jmostrar1">
+    <Component class="javax.swing.JTextField" name="M_1">
       <Properties>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Dubai" size="18" style="3"/>
@@ -413,7 +413,7 @@
         </Constraint>
       </Constraints>
     </Component>
-    <Component class="javax.swing.JTextField" name="Jmostrar2">
+    <Component class="javax.swing.JTextField" name="M_2">
       <Properties>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Dubai" size="18" style="3"/>
@@ -428,7 +428,7 @@
         </Constraint>
       </Constraints>
     </Component>
-    <Component class="javax.swing.JTextField" name="Jmostrar3">
+    <Component class="javax.swing.JTextField" name="M_3">
       <Properties>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Dubai" size="18" style="3"/>

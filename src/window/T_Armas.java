@@ -51,7 +51,7 @@ public void CargarRegistrar(){
     
 }
 
-   public void readBin(){
+   public void readBin1(){
         contenedor.clear();
         ObjectInputStream binario = null;
         try {
@@ -78,7 +78,7 @@ public void CargarRegistrar(){
             try {
                 binario.close();
             } catch (IOException ex) {
-                Logger.getLogger(Registro.class.getName()).log(Level.SEVERE, null, ex);
+                Logger.getLogger(Armas.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
         

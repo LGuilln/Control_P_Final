@@ -135,9 +135,9 @@ public class Registro extends javax.swing.JFrame {
         Save = new javax.swing.JButton();
         Clean = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
-        Jmostrar1 = new javax.swing.JTextField();
-        Jmostrar2 = new javax.swing.JTextField();
-        Jmostrar3 = new javax.swing.JTextField();
+        M_1 = new javax.swing.JTextField();
+        M_2 = new javax.swing.JTextField();
+        M_3 = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
@@ -295,14 +295,14 @@ public class Registro extends javax.swing.JFrame {
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/WallpaperIz.jpg"))); // NOI18N
         getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 610, -1));
 
-        Jmostrar1.setFont(new java.awt.Font("Dubai", 3, 18)); // NOI18N
-        getContentPane().add(Jmostrar1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
+        M_1.setFont(new java.awt.Font("Dubai", 3, 18)); // NOI18N
+        getContentPane().add(M_1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
-        Jmostrar2.setFont(new java.awt.Font("Dubai", 3, 18)); // NOI18N
-        getContentPane().add(Jmostrar2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
+        M_2.setFont(new java.awt.Font("Dubai", 3, 18)); // NOI18N
+        getContentPane().add(M_2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
-        Jmostrar3.setFont(new java.awt.Font("Dubai", 3, 18)); // NOI18N
-        getContentPane().add(Jmostrar3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
+        M_3.setFont(new java.awt.Font("Dubai", 3, 18)); // NOI18N
+        getContentPane().add(M_3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -335,9 +335,9 @@ public class Registro extends javax.swing.JFrame {
      String v1 = v_1.getText();
      String v2 = v_2.getText();
      String v3 = v_3.getText();
-     String tipo1 = Jmostrar1.getText();
-     String tipo2 = Jmostrar2.getText();
-     String tipo3 = Jmostrar3.getText();
+     String tipo1 = M_1.getText();
+     String tipo2 = M_2.getText();
+     String tipo3 = M_3.getText();
      
         //NOMBRE DE LA PERSONA ATRUBUTOS
         Persona  person = new Persona(nombre, v1, v2, v3, tipo1, tipo2, tipo3);
@@ -348,7 +348,7 @@ public class Registro extends javax.swing.JFrame {
         v_2.setText("");
         v_3.setText("");
      
-         Persona p = (Persona)contenedor.getLast();
+        Persona p = (Persona)contenedor.getLast();
         createBin();
 // TODO add your handling code here:
     }//GEN-LAST:event_SaveActionPerformed
@@ -376,7 +376,7 @@ public class Registro extends javax.swing.JFrame {
 
     private void CB3ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_CB3ItemStateChanged
         // TODO add your handling code here:
-        this.Jmostrar3.setText(" "+CB3.getSelectedItem().toString());
+        this.M_3.setText(" "+CB3.getSelectedItem().toString());
     }//GEN-LAST:event_CB3ItemStateChanged
 
     private void CB3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CB3ActionPerformed
@@ -385,7 +385,7 @@ public class Registro extends javax.swing.JFrame {
     }//GEN-LAST:event_CB3ActionPerformed
 
     private void CB2ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_CB2ItemStateChanged
-    this.Jmostrar2.setText(" "+CB2.getSelectedItem().toString());
+    this.M_2.setText(" "+CB2.getSelectedItem().toString());
         // TODO add your handling code here:
     }//GEN-LAST:event_CB2ItemStateChanged
 
@@ -394,7 +394,7 @@ public class Registro extends javax.swing.JFrame {
     }//GEN-LAST:event_CB2ActionPerformed
 
     private void CB1ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_CB1ItemStateChanged
-       this.Jmostrar1.setText(" "+CB1.getSelectedItem().toString());
+       this.M_1.setText(" "+CB1.getSelectedItem().toString());
         // TODO add your handling code here:
     }//GEN-LAST:event_CB1ItemStateChanged
 
@@ -444,10 +444,10 @@ public class Registro extends javax.swing.JFrame {
     public static javax.swing.JComboBox<String> CB2;
     public static javax.swing.JComboBox<String> CB3;
     private javax.swing.JButton Clean;
-    public static javax.swing.JTextField Jmostrar1;
-    public static javax.swing.JTextField Jmostrar2;
-    public static javax.swing.JTextField Jmostrar3;
     private javax.swing.JButton Jugar;
+    public static javax.swing.JTextField M_1;
+    public static javax.swing.JTextField M_2;
+    public static javax.swing.JTextField M_3;
     private javax.swing.JButton Save;
     private javax.swing.JButton jButton3Reportes;
     public static javax.swing.JLabel jLabel1;

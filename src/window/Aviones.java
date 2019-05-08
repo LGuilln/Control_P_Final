@@ -70,7 +70,6 @@ public class Aviones extends javax.swing.JFrame {
     private void initComponents() {
 
         Ver_Aviones = new javax.swing.JButton();
-        Binario = new javax.swing.JButton();
         Bback = new javax.swing.JButton();
         GAviones = new javax.swing.JButton();
         N_Arma = new javax.swing.JLabel();
@@ -100,17 +99,7 @@ public class Aviones extends javax.swing.JFrame {
                 Ver_AvionesActionPerformed(evt);
             }
         });
-        getContentPane().add(Ver_Aviones, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 690, 130, 50));
-
-        Binario.setBackground(new java.awt.Color(102, 255, 0));
-        Binario.setFont(new java.awt.Font("Arial Black", 1, 18)); // NOI18N
-        Binario.setText("Log");
-        Binario.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BinarioActionPerformed(evt);
-            }
-        });
-        getContentPane().add(Binario, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 600, 100, 50));
+        getContentPane().add(Ver_Aviones, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 690, 130, 50));
 
         Bback.setBackground(new java.awt.Color(102, 255, 0));
         Bback.setFont(new java.awt.Font("Arial Black", 1, 18)); // NOI18N
@@ -141,6 +130,11 @@ public class Aviones extends javax.swing.JFrame {
 
         nombre_avion.setFont(new java.awt.Font("Arial", 0, 20)); // NOI18N
         nombre_avion.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        nombre_avion.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                nombre_avionActionPerformed(evt);
+            }
+        });
         getContentPane().add(nombre_avion, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 90, 340, 30));
 
         N_Ataque.setBackground(new java.awt.Color(0, 0, 204));
@@ -295,9 +289,9 @@ public class Aviones extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_Ver_AvionesActionPerformed
 
-    private void BinarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BinarioActionPerformed
+    private void nombre_avionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nombre_avionActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_BinarioActionPerformed
+    }//GEN-LAST:event_nombre_avionActionPerformed
 
     /**
      * @param args the command line arguments
@@ -400,7 +394,6 @@ public class Aviones extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     public static javax.swing.JTextField Ataque;
     private javax.swing.JButton Bback;
-    private javax.swing.JButton Binario;
     public static javax.swing.JTextField Defensa;
     private javax.swing.JButton GAviones;
     private javax.swing.JLabel N_Arma;

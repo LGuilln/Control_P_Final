@@ -7,14 +7,24 @@ package window;
 
 
 import clases.Tanques_C;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
+import static window.Tanques.contenedor_tan;
+import static window.Tanques.nombre_tanque;
+import static window.Bienvenida.pathTanques;
+
 
 /**
  *
  * @author danie
  */
-public class T_Tanques extends javax.swing.JFrame {
+public final class T_Tanques extends javax.swing.JFrame {
    
     private DefaultTableModel modelo;
     int cont = 0;
@@ -26,14 +36,13 @@ public class T_Tanques extends javax.swing.JFrame {
     public T_Tanques() {
         initComponents();
         this.setLocationRelativeTo(null);
-        setSize(1290, 1000);
+        readBinario_T();
         CargarRegistrar();
         Cargardatos();
     }
 public void CargarRegistrar(){
     String datos [][]= {};
     String columna[]= {"Tanque", "Presicion","Ataque", "Defensa", "Velocidad", "Precio"};
-    String columna1[] = { "Tanque" };
     
     
         
@@ -43,17 +52,51 @@ public void CargarRegistrar(){
     jTableTanques.setModel(modelo);
     
 }
+
+ public void readBinario_T(){
+        contenedor_tan.clear();
+        ObjectInputStream binario = null;
+        try {
+            String nameFiles = nombre_tanque.getText();
+            File file_ta = new File("Tanques");
+            
+            
+            
+            for (String string_t:file_ta.list()) {
+                
+                binario = new ObjectInputStream(new FileInputStream(pathTanques+string_t));
+                Tanques_C tankk = (Tanques_C) binario.readObject();
+                contenedor_tan.add(tankk);
+                
+            }
+            
+            
+            
+            
+        } catch (Exception ez) {
+            ez.printStackTrace();
+           // Logger.getLogger(Registro.class.getName()).log(Level.SEVERE, null, ex);
+        } finally {
+            try {
+                binario.close();
+            } catch (IOException ez) {
+                Logger.getLogger(Tanques.class.getName()).log(Level.SEVERE, null, ez);
+            }
+        }
+         
+    }
+   
             public void Cargardatos(){
-                Tanques_C c;
-                for (int i = 0; i < Tanques.contenedor.size(); i++) {
-                    c= (Tanques_C)Tanques.contenedor.get(i);
+                Tanques_C t;
+                for (int i = 0; i < Tanques.contenedor_tan.size(); i++) {
+                    t= (Tanques_C)Tanques.contenedor_tan.get(i);
                     modelo.insertRow(cont, new Object []{ });
-                    modelo.setValueAt(c.getTanque(), cont, 0);
-                    modelo.setValueAt(c.getPresicion(), cont, 1);
-                    modelo.setValueAt(c.getAtaque(), cont, 2);
-                    modelo.setValueAt(c.getDefensa(), cont, 3);
-                    modelo.setValueAt(c.getVelocidad(), cont, 4);
-                    modelo.setValueAt(c.getPrecio(),cont,5);
+                    modelo.setValueAt(t.getTanque(), cont, 0);
+                    modelo.setValueAt(t.getPresicion(), cont, 1);
+                    modelo.setValueAt(t.getAtaque(), cont, 2);
+                    modelo.setValueAt(t.getDefensa(), cont, 3);
+                    modelo.setValueAt(t.getVelocidad(), cont, 4);
+                    modelo.setValueAt(t.getPrecio(),cont,5);
                     
                  
                 }
@@ -77,7 +120,6 @@ public void CargarRegistrar(){
         jLabel2 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTableTanques = new javax.swing.JTable();
-        jLabel1 = new javax.swing.JLabel();
         jScrollPane2 = new javax.swing.JScrollPane();
         jTableEstadisticas1 = new javax.swing.JTable();
 
@@ -270,7 +312,7 @@ public void CargarRegistrar(){
     private javax.swing.JButton jButtonBack1;
     private javax.swing.JButton jButtonDelete;
     private javax.swing.JButton jButtonJugar;
-    private javax.swing.JLabel jLabel1;
+    private final javax.swing.JLabel jLabel1 = new javax.swing.JLabel();
     private javax.swing.JLabel jLabel2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;

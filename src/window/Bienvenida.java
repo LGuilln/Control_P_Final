@@ -133,6 +133,8 @@ public class Bienvenida extends javax.swing.JFrame {
         
         File createCarpeta1 = new File("Armas");
         File createCarpeta2 = new File("Aviones");
+        File createCarpeta3 = new File("Tanques");
+        
         
         if (!createCarpeta.exists()) {
             createCarpeta.mkdir();
@@ -142,28 +144,16 @@ public class Bienvenida extends javax.swing.JFrame {
         pathPersona = createCarpeta.getAbsolutePath()+File.separatorChar;
         pathArmas = createCarpeta1.getAbsolutePath()+File.separatorChar;
         pathAviones = createCarpeta2.getAbsolutePath()+File.separatorChar;
+        pathTanques = createCarpeta3.getAbsolutePath()+File.separatorChar;
         
-        
-        
-        
-        /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new Bienvenida().setVisible(true);
             }
         });
-    
-        
-   
-        
-                
-
-        
-        
-       
-        
     }
     public static String pathArmas;
+    public static String pathTanques;
     public static String pathAviones;
     public static String pathPersona;
     // Variables declaration - do not modify//GEN-BEGIN:variables

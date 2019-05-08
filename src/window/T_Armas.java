@@ -33,8 +33,7 @@ public class T_Armas extends javax.swing.JFrame {
     public T_Armas() {
         initComponents();
         this.setLocationRelativeTo(null);
-        setSize(1290, 1000);
-        readBin();
+        readBinario1();
         CargarRegistrar();
         Cargardatos();
         
@@ -42,7 +41,6 @@ public class T_Armas extends javax.swing.JFrame {
 public void CargarRegistrar(){
     String datos [][]= {};
     String columna[]= {"Arma", "Presicion", "Daño", "Velocidad", "Precio"};
-    String columna1[] = { "Arma" };
     
     
         
@@ -53,18 +51,18 @@ public void CargarRegistrar(){
     
 }
 
-   public void readBin(){
+   public void readBinario1(){
         contenedor_armas.clear();
         ObjectInputStream binario = null;
         try {
-            String nameFile1 = nombre_arma.getText();
-            File file1 = new File("Arma");
+            String nameFile = nombre_arma.getText();
+            File file_ar = new File("Armas");
             
             
             
-            for (String string1 : file1.list()) {
+            for (String string3:file_ar.list()) {
                 
-                binario = new ObjectInputStream(new FileInputStream(pathArmas+string1));
+                binario = new ObjectInputStream(new FileInputStream(pathArmas+string3));
                 Armas_C arm = (Armas_C) binario.readObject();
                 contenedor_armas.add(arm);
                 
@@ -73,14 +71,14 @@ public void CargarRegistrar(){
             
             
             
-        } catch (Exception ex) {
-            ex.printStackTrace();
+        } catch (Exception e) {
+            e.printStackTrace();
            // Logger.getLogger(Registro.class.getName()).log(Level.SEVERE, null, ex);
         } finally {
             try {
                 binario.close();
-            } catch (IOException ex) {
-                Logger.getLogger(Armas.class.getName()).log(Level.SEVERE, null, ex);
+            } catch (IOException e) {
+                Logger.getLogger(Armas.class.getName()).log(Level.SEVERE, null, e);
             }
         }
         
@@ -257,11 +255,7 @@ public void CargarRegistrar(){
 
     private void jButtonJugarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonJugarActionPerformed
         this.setVisible(false);
-        new Option().setVisible(true);        //new interfaz().setVisible(true);
-
-        // new NewJFrame().setVisible(true);
-
-        // TODO add your handling code here:
+        new Option().setVisible(true);                // TODO add your handling code here:
     }//GEN-LAST:event_jButtonJugarActionPerformed
 
     /**

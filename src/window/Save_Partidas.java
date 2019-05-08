@@ -32,7 +32,7 @@ public class Save_Partidas extends javax.swing.JFrame {
     public Save_Partidas() {
         initComponents();
         this.setLocationRelativeTo(null);
-        setSize(1290, 1000);
+       // setSize(1290, 1000);
         CargarRegistrar();
         Cargardatos();
     }

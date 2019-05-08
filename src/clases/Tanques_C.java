@@ -5,11 +5,13 @@
  */
 package clases;
 
+import java.io.Serializable;
+
 /**
  *
  * @author luedu
  */
-public class Tanques_C {
+public class Tanques_C implements Serializable{
     String N_Tanque;
     String N_Presicion;
     String N_Ataque;

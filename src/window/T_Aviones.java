@@ -35,7 +35,6 @@ public class T_Aviones extends javax.swing.JFrame {
     public T_Aviones() {
         initComponents();
         this.setLocationRelativeTo(null);
-        setSize(1290, 1000);
         readBinario();
         CargarRegistrar();
         Cargardatos();

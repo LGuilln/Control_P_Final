@@ -36,7 +36,7 @@ public class Estadisticas extends javax.swing.JFrame {
     public Estadisticas() {
         initComponents();
         this.setLocationRelativeTo(null);
-        setSize(1290, 1000);
+        //setSize(1290, 1000);
         readBin();
         CargarRegistrar();
         Cargardatos();

@@ -97,16 +97,25 @@ public class Eleccion extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void V_AvionesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_V_AvionesActionPerformed
-        this.setVisible(false);
-        new T_Aviones().setVisible(true);
-      //  new NewJFrame().setVisible(true);
+        Aviones principa2 = new Aviones();
+        principa2.show();
+        principa2.setVisible(false);
+       
+        T_Aviones principal = new T_Aviones();
+        principal.show();
+        this.setVisible(false); 
 
     }//GEN-LAST:event_V_AvionesActionPerformed
 
     private void V_TanquesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_V_TanquesActionPerformed
-         this.setVisible(false);
-        new T_Tanques().setVisible(true);
-          
+        Tanques principa2 = new Tanques();
+        principa2.show();
+        principa2.setVisible(false);
+       
+        T_Tanques principal = new T_Tanques();
+        principal.show();
+        this.setVisible(false); 
+  
 //    add your handling code here:
     }//GEN-LAST:event_V_TanquesActionPerformed
 
@@ -121,9 +130,17 @@ public class Eleccion extends javax.swing.JFrame {
     }//GEN-LAST:event_ExitActionPerformed
 
     private void V_ArmasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_V_ArmasActionPerformed
-        this.setVisible(false);
-        new T_Armas().setVisible(true);
-     
+        Armas principa2 = new Armas();
+        principa2.show();
+        principa2.setVisible(false);
+       
+        T_Armas principal = new T_Armas();
+        principal.show();
+        this.setVisible(false); 
+
+        
+        
+        
         
 // TODO add your handling code here:
     }//GEN-LAST:event_V_ArmasActionPerformed

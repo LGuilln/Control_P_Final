@@ -7,16 +7,23 @@ package window;
 
 
 import clases.Tanques_C;
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.ObjectOutputStream;
 import java.util.LinkedList;
 import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import static window.Bienvenida.pathTanques;
 /**
  *
  * @author luedu
  */
 public class Tanques extends javax.swing.JFrame {
     
-    public static LinkedList contenedor = new LinkedList();
-     public int buscar;
+    public static LinkedList contenedor_tan = new LinkedList();
+    public int buscar;
   
     /**
      * Creates new form Inicio1
@@ -25,6 +32,29 @@ public class Tanques extends javax.swing.JFrame {
         initComponents();
         this.setLocationRelativeTo(null);
 
+    }
+    
+      public void createBin5(){
+        ObjectOutputStream binario = null;
+        try {
+            String nameFile = nombre_tanque.getText();
+            File file = new File(nameFile);
+            Tanques_C Tank = (Tanques_C) contenedor_tan.getLast();
+           
+            binario = new ObjectOutputStream(new FileOutputStream(pathTanques+Tank.getTanque()+".tank"));
+            binario.writeObject(Tank);
+            
+        } catch (Exception e) {
+            e.printStackTrace();
+           // Logger.getLogger(Registro.class.getName()).log(Level.SEVERE, null, ex);
+        } finally {
+            try {
+                binario.close();
+            } catch (IOException e) {
+                Logger.getLogger(Tanques.class.getName()).log(Level.SEVERE, null, e);
+            }
+        }
+        
     }
 
     /**
@@ -39,7 +69,7 @@ public class Tanques extends javax.swing.JFrame {
         Bback = new javax.swing.JButton();
         GTanques = new javax.swing.JButton();
         N_Arma = new javax.swing.JLabel();
-        Tanque = new javax.swing.JTextField();
+        nombre_tanque = new javax.swing.JTextField();
         N_Ataque = new javax.swing.JLabel();
         Ataque = new javax.swing.JTextField();
         N_Defensa = new javax.swing.JLabel();
@@ -85,9 +115,14 @@ public class Tanques extends javax.swing.JFrame {
         N_Arma.setAutoscrolls(true);
         getContentPane().add(N_Arma, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 80, -1, -1));
 
-        Tanque.setFont(new java.awt.Font("Arial", 0, 20)); // NOI18N
-        Tanque.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        getContentPane().add(Tanque, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 90, 340, 30));
+        nombre_tanque.setFont(new java.awt.Font("Arial", 0, 20)); // NOI18N
+        nombre_tanque.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        nombre_tanque.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                nombre_tanqueActionPerformed(evt);
+            }
+        });
+        getContentPane().add(nombre_tanque, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 90, 340, 30));
 
         N_Ataque.setBackground(new java.awt.Color(0, 0, 204));
         N_Ataque.setFont(new java.awt.Font("Arial Black", 0, 24)); // NOI18N
@@ -194,7 +229,7 @@ public class Tanques extends javax.swing.JFrame {
     }//GEN-LAST:event_BbackActionPerformed
 
     private void GTanquesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_GTanquesActionPerformed
-        String N_Tanque = Tanque.getText();
+        String N_Tanque = nombre_tanque.getText();
         String N_Presicion = Presicion.getText();
         String N_Ataque = Ataque.getText();
         String N_Defensa = Defensa.getText();
@@ -207,14 +242,17 @@ public class Tanques extends javax.swing.JFrame {
         //NOMBRE DE LA PERSONA ATRUBUTOS
       
         Tanques_C taq  = new Tanques_C (N_Tanque, N_Presicion,N_Ataque, N_Defensa, N_Velocidad, N_Precio);
-        contenedor.add(taq);
+        contenedor_tan.add(taq);
         //Limpia
-        Tanque.setText("");
+        nombre_tanque.setText("");
         Presicion.setText("");
         Ataque.setText("");
         Defensa.setText("");
         Velocidad.setText("");
         Precio.setText("");
+        
+        Tanques_C t = (Tanques_C)contenedor_tan.getLast();
+        createBin5();
         
         // TODO add your handling code here:
     }//GEN-LAST:event_GTanquesActionPerformed
@@ -245,6 +283,10 @@ public class Tanques extends javax.swing.JFrame {
 
         // TODO add your handling code here:
     }//GEN-LAST:event_Ver_TanquesActionPerformed
+
+    private void nombre_tanqueActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nombre_tanqueActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_nombre_tanqueActionPerformed
 
     /**
      * @param args the command line arguments
@@ -313,22 +355,24 @@ public class Tanques extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JTextField Ataque;
+    public static javax.swing.JTextField Ataque;
     private javax.swing.JButton Bback;
-    private javax.swing.JTextField Defensa;
-    private javax.swing.JButton GTanques;
+    public static javax.swing.JTextField Defensa;
+    public static javax.swing.JButton GTanques;
     private javax.swing.JLabel N_Arma;
     private javax.swing.JLabel N_Ataque;
     private javax.swing.JLabel N_Defensa;
     private javax.swing.JLabel N_Precio;
     private javax.swing.JLabel N_Presicion;
     private javax.swing.JLabel N_Velocidad;
-    private javax.swing.JTextField Precio;
-    private javax.swing.JTextField Presicion;
-    private javax.swing.JTextField Tanque;
-    private javax.swing.JTextField Velocidad;
-    private javax.swing.JButton Ver_Tanques;
-    private javax.swing.JLabel jLabel1;
+    public static javax.swing.JTextField Precio;
+    public static javax.swing.JTextField Presicion;
+    public static javax.swing.JTextField Velocidad;
+    public static javax.swing.JButton Ver_Tanques;
+    public static javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    public static javax.swing.JTextField nombre_tanque;
     // End of variables declaration//GEN-END:variables
+
+    
 }

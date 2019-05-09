@@ -7,7 +7,7 @@ package clases;
 
 /**
  *
- * @author danie
+ * @author luedu
  */
 public class Enemigos extends Vehiculos{
    int hp=40+(nivel*5),punteria=50+(nivel*5),ataque=8+(nivel*2), defensa=2+(nivel*2);

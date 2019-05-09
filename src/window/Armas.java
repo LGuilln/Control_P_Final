@@ -37,6 +37,10 @@ public class Armas extends javax.swing.JFrame {
 
     }
     
+    /**
+ * Método para Guardar en Lenguaje Máquina
+ * @param evt 
+ */
       public void createBin(){
         ObjectOutputStream binario = null;
         try {
@@ -209,7 +213,11 @@ public class Armas extends javax.swing.JFrame {
         this.setVisible(false);
         new Tienda().setVisible(true);// TODO add your handling code here:
     }//GEN-LAST:event_BbackActionPerformed
-
+/**
+ * Método para crear Armas
+ * @param evt 
+ */
+    
     private void GArmasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_GArmasActionPerformed
       
         String N_Arma = nombre_arma.getText();
@@ -253,6 +261,10 @@ public class Armas extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_PresicionActionPerformed
 
+  /**
+ * Método ver Armas
+ * @param evt 
+ */
     private void Ver_ArmasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Ver_ArmasActionPerformed
      
       Armas principa2 = new Armas();

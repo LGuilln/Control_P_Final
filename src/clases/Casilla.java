@@ -9,7 +9,7 @@ import javax.swing.JButton;
 
 /**
  *
- * @author danie
+ * @author luedu
  */
 public class Casilla extends JButton {
     

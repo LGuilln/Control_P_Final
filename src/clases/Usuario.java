@@ -7,7 +7,7 @@ package clases;
 
 /**
  *
- * @author danie
+ * @author luedu
  */
 public class Usuario {
 

@@ -26,7 +26,7 @@ public class Tanques extends javax.swing.JFrame {
     public int buscar;
   
     /**
-     * Creates new form Inicio1
+     * Creates new form tienda
      */
     public Tanques() {
         initComponents();
@@ -34,7 +34,12 @@ public class Tanques extends javax.swing.JFrame {
 
     }
     
-      public void createBin5(){
+ /**
+ * Método para Archivos de Tanques
+ * @param evt 
+ */
+ 
+    public void createBin5(){
         ObjectOutputStream binario = null;
         try {
             String nameFile = nombre_tanque.getText();
@@ -228,6 +233,11 @@ public class Tanques extends javax.swing.JFrame {
         new Tienda().setVisible(true);// TODO add your handling code here:
     }//GEN-LAST:event_BbackActionPerformed
 
+ /**
+ * Método para guardar Tanques
+ * @param evt 
+ */
+ 
     private void GTanquesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_GTanquesActionPerformed
         String N_Tanque = nombre_tanque.getText();
         String N_Presicion = Presicion.getText();

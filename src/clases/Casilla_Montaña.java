@@ -5,10 +5,20 @@
  */
 package clases;
 
+import java.awt.Color;
+
 /**
  *
- * @author danie
+ * @author luedu
  */
-public class Dados {
+public class Casilla_Montaña extends Casilla{
+
+    
+     public Casilla_Montaña(){
+    
+        this.setBackground(Color.green);
+}
+
+   
     
 }

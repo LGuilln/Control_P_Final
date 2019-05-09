@@ -9,7 +9,7 @@ import java.io.Serializable;
 
 /**
  *
- * @author danie
+ * @author luedu
  */
 public class Persona implements Serializable{
     String nombre;

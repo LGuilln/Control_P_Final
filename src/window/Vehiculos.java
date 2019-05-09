@@ -11,9 +11,7 @@ package window;
  */
 public class Vehiculos extends javax.swing.JFrame {
 
-    /**
-     * Creates new form Inicio1
-     */
+    
     public Vehiculos() {
         initComponents();
         this.setLocationRelativeTo(null);
@@ -85,6 +83,11 @@ public class Vehiculos extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+ /**
+ * Método para Abrir Tank
+ * @param evt 
+ */
+ 
     private void C_TanquesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_C_TanquesActionPerformed
         this.setVisible(false);
         new Tanques().setVisible(true);
@@ -92,6 +95,11 @@ public class Vehiculos extends javax.swing.JFrame {
 
     }//GEN-LAST:event_C_TanquesActionPerformed
 
+    /**
+ * Método para Abrir Av
+ * @param evt 
+ */
+ 
     private void C_AvionesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_C_AvionesActionPerformed
         this.setVisible(false);
         new Aviones().setVisible(true);

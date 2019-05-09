@@ -79,6 +79,12 @@ public class Registro extends javax.swing.JFrame {
          } 
 
     }*/
+    
+ /**
+ * Método para C_Binario
+ * @param evt 
+ */
+ 
     public void createBin(){
         ObjectOutputStream binario = null;
         try {
@@ -329,6 +335,11 @@ public class Registro extends javax.swing.JFrame {
 // TODO add your handling code here:
     }//GEN-LAST:event_JugarActionPerformed
 
+ /**
+ * Método para guardar
+ * @param evt 
+ */
+ 
     private void SaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SaveActionPerformed
         
      String nombre = nickname.getText();
@@ -366,10 +377,8 @@ public class Registro extends javax.swing.JFrame {
 
     private void CleanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CleanActionPerformed
        
-        SaveActionPerformed(evt);
-       
-       // this.setVisible(false);
-       // new Registro().setVisible(true);
+       this.setVisible(false);
+       new Registro().setVisible(true);
         
 // TODO add your handling code here:
     }//GEN-LAST:event_CleanActionPerformed

@@ -7,7 +7,7 @@ package clases;
 
 /**
  *
- * @author danie
+ * @author luedu
  */
 public class Avion extends Vehiculos{
     int ataque=7, defensa=3, punteria=70;

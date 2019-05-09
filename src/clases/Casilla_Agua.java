@@ -9,16 +9,19 @@ import java.awt.Color;
 
 /**
  *
- * @author danie
+ * @author luedu
  */
-public class CasillaMontaña extends Casilla{
-
-    
-     public CasillaMontaña(){
-    
-        this.setBackground(Color.green);
-}
+public class Casilla_Agua extends Casilla {
+ 
 
    
+public Casilla_Agua(){
     
+        this.setBackground(Color.blue);
 }
+
+  
+        
+    }
+    
+

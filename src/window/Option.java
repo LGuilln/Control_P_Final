@@ -92,6 +92,11 @@ public class Option extends javax.swing.JFrame {
 
     }//GEN-LAST:event_BNuevoActionPerformed
 
+ /**
+ * Método para Cargar Partidas
+ * @param evt 
+ */
+ 
     private void BCargarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BCargarActionPerformed
         
       Registro principa2 = new Registro();
@@ -114,6 +119,11 @@ public class Option extends javax.swing.JFrame {
         new Bienvenida().setVisible(true);// TODO add your handling code here:
     }//GEN-LAST:event_BbackActionPerformed
 
+ /**
+ * Método para ir a Tienda
+ * @param evt 
+ */
+ 
     private void TiendaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TiendaActionPerformed
    
         this.setVisible(false);

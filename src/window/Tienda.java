@@ -96,6 +96,11 @@ public class Tienda extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+ /**
+ * Método para Tienda VEhiculos
+ * @param evt 
+ */
+ 
     private void CVehiculosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CVehiculosActionPerformed
         this.setVisible(false);
         new Vehiculos().setVisible(true);
@@ -103,6 +108,12 @@ public class Tienda extends javax.swing.JFrame {
 
     }//GEN-LAST:event_CVehiculosActionPerformed
 
+    
+ /**
+ * Método para Tienda de Armas
+ * @param evt 
+ */
+ 
     private void CArmasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CArmasActionPerformed
         this.setVisible(false);
         new Armas().setVisible(true);
@@ -110,16 +121,24 @@ public class Tienda extends javax.swing.JFrame {
 //    add your handling code here:
     }//GEN-LAST:event_CArmasActionPerformed
 
+    
     private void BbackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BbackActionPerformed
         this.setVisible(false);
         new Option().setVisible(true);// TODO add your handling code here:
     }//GEN-LAST:event_BbackActionPerformed
 
+    
     private void ExitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ExitActionPerformed
     System.exit(0);
         // TODO add your handling code here:
     }//GEN-LAST:event_ExitActionPerformed
 
+    
+ /**
+ * Método para comprar en Tienda
+ * @param evt 
+ */
+ 
     private void BComprarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BComprarActionPerformed
         this.setVisible(false);
         new Eleccion().setVisible(true);// TODO add your handling code here:

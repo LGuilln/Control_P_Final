@@ -1,4 +1,7 @@
 Panjoj  Avión caaz  Avión lusn  Avión nedd 
 LGuillen  Avión bomber  Tanque cazi  Avión Alpha 
+L       
 Daniel  Tanque 1  Tanque 2  Avión 3 
+Daniel   Tanque D1  Avión D2  Tanque D3 
 Brayan Imbecil  Tanque Dany  Avión Dany2  Tanque Dany3 
+       

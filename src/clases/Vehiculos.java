@@ -12,7 +12,7 @@ import javax.swing.JButton;
 
 /**
  *
- * @author danie
+ * @author luedu
  */
 abstract public class Vehiculos extends JButton{
     //ATRIBUTOS de vehículos

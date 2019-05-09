@@ -41,7 +41,13 @@ public class Estadisticas extends javax.swing.JFrame {
         CargarRegistrar();
         Cargardatos();
     }
-public void CargarRegistrar(){
+    
+ /**
+ * Método para Cargar Datos
+ * @param evt 
+ */
+ 
+    public void CargarRegistrar(){
     String datos [][]= {};
     String columna[]= {"Nombre","Tipo V1", "V1", "Tipo V2", "V2", "Tipo V3", "V3"};
     String columna1[] = { "V1" };
@@ -55,6 +61,11 @@ public void CargarRegistrar(){
     
 }
 
+ 
+ /**
+ * Método para Crear archivos Usuarios
+ * @param evt 
+ */
  
     public void readBin(){
         list.clear();
@@ -249,6 +260,12 @@ public void CargarRegistrar(){
         // TODO add your handling code here:
     }//GEN-LAST:event_jButtonDeleteAncestorAdded
 
+ /**
+ * Método para Eliminar
+ * @param evt 
+ */
+ 
+    
     private void jButtonDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonDeleteActionPerformed
 
         if(jTableEstadisticas.getSelectedRow()==-1){
@@ -276,9 +293,15 @@ public void CargarRegistrar(){
         // TODO add your handling code here:
     }//GEN-LAST:event_jButtonJugarActionPerformed
 
+    
+ /**
+ * Método para Exportar a .Txt
+ * @param evt 
+ */
+ 
     private void ImportActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ImportActionPerformed
         
-        String filePath = "C:\\Users\\luedu\\Documents\\NetBeansProjects\\P_Final\\txtfile.txt";
+        String filePath = "C:\\Users\\luedu\\Documents\\NetBeansProjects\\P_Final\\File(Users).txt";
         File file = new File(filePath);
         try {
             FileWriter fw = new FileWriter(file);

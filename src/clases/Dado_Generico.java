@@ -5,15 +5,10 @@
  */
 package clases;
 
-import java.awt.Color;
-
 /**
  *
- * @author danie
+ * @author luedu
  */
-public class CasillaTerreno extends Casilla{
-    public CasillaTerreno(){
-        this.setBackground(Color.gray);
-    }
+public class Dado_Generico {
     
 }

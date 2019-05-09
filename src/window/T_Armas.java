@@ -6,8 +6,10 @@
 package window;
 
 import clases.Armas_C;
+import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileInputStream;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.util.logging.Level;
@@ -112,6 +114,7 @@ public void CargarRegistrar(){
         jButtonBack1 = new javax.swing.JButton();
         jButtonDelete = new javax.swing.JButton();
         jButtonJugar = new javax.swing.JButton();
+        Import = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTableArmas = new javax.swing.JTable();
@@ -179,6 +182,14 @@ public void CargarRegistrar(){
             }
         });
         getContentPane().add(jButtonJugar, new org.netbeans.lib.awtextra.AbsoluteConstraints(870, 800, 110, -1));
+
+        Import.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/expor.png"))); // NOI18N
+        Import.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ImportActionPerformed(evt);
+            }
+        });
+        getContentPane().add(Import, new org.netbeans.lib.awtextra.AbsoluteConstraints(970, 20, 80, 70));
 
         jLabel2.setFont(new java.awt.Font("Arial Black", 0, 36)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(0, 255, 0));
@@ -258,6 +269,29 @@ public void CargarRegistrar(){
         new Option().setVisible(true);                // TODO add your handling code here:
     }//GEN-LAST:event_jButtonJugarActionPerformed
 
+    private void ImportActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ImportActionPerformed
+
+        String filePath = "C:\\Users\\luedu\\Documents\\NetBeansProjects\\P_Final\\file(Armas).txt";
+        File file = new File(filePath);
+        try {
+            FileWriter fw = new FileWriter(file);
+            BufferedWriter bw = new BufferedWriter(fw);
+
+            for(int i = 0; i < jTableArmas.getRowCount(); i++){//rows
+                for(int j = 0; j < jTableArmas.getColumnCount(); j++){//columns
+                    bw.write(jTableArmas.getValueAt(i, j).toString()+" ");
+                }
+                bw.newLine();
+            }
+
+            bw.close();
+            fw.close();
+
+        } catch (IOException ex) {
+            Logger.getLogger(T_Armas.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_ImportActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -297,6 +331,7 @@ public void CargarRegistrar(){
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton Import;
     private javax.swing.JButton jButtonBack1;
     private javax.swing.JButton jButtonDelete;
     private javax.swing.JButton jButtonJugar;

@@ -96,6 +96,12 @@ public class Eleccion extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    
+ /**
+ * Método para Tienda Aviones
+ * @param evt 
+ */
+ 
     private void V_AvionesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_V_AvionesActionPerformed
         Aviones principa2 = new Aviones();
         principa2.show();
@@ -107,6 +113,11 @@ public class Eleccion extends javax.swing.JFrame {
 
     }//GEN-LAST:event_V_AvionesActionPerformed
 
+ /**
+ * Método para Tienda Tanques
+ * @param evt 
+ */
+ 
     private void V_TanquesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_V_TanquesActionPerformed
         Tanques principa2 = new Tanques();
         principa2.show();
@@ -129,6 +140,12 @@ public class Eleccion extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_ExitActionPerformed
 
+    
+ /**
+ * Método para Tienda Armas
+ * @param evt 
+ */
+ 
     private void V_ArmasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_V_ArmasActionPerformed
         Armas principa2 = new Armas();
         principa2.show();

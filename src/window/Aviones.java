@@ -15,8 +15,7 @@ import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import static window.Bienvenida.pathAviones;
-/**
-import static window.Tanques.contenedor;
+
 
 /**
  *
@@ -36,6 +35,10 @@ public class Aviones extends javax.swing.JFrame {
         this.setLocationRelativeTo(null);
 
     }
+    /**
+ * Método para Archivos de Aviones
+ * @param evt 
+ */
       public void createBin(){
         ObjectOutputStream binario = null;
         try {
@@ -231,6 +234,10 @@ public class Aviones extends javax.swing.JFrame {
         new Tienda().setVisible(true);// TODO add your handling code here:
     }//GEN-LAST:event_BbackActionPerformed
 
+ /**
+ * Método para guardar Aviones
+ * @param evt 
+ */
     private void GAvionesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_GAvionesActionPerformed
     
         String N_Tanque = nombre_avion.getText();

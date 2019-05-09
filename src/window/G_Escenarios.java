@@ -6,9 +6,9 @@
 package window;
 
 import clases.Casilla;
-import clases.CasillaMontaña;
-import clases.CasillaAgua;
-import clases.CasillaTerreno;
+import clases.Casilla_Montaña;
+import clases.Casilla_Agua;
+import clases.Casilla_Terreno;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.GridLayout;
@@ -20,7 +20,7 @@ import javax.swing.JButton;
 
 /**
  *
- * @author danie
+ * @author luedu
  */
 public class G_Escenarios extends javax.swing.JFrame {
     int turno, contp, contmp;
@@ -29,7 +29,7 @@ public class G_Escenarios extends javax.swing.JFrame {
   Casilla[][] tablero;
     /**
      * constructor
-     * Creates new form JuegoTableros
+     * Creates new form Escenarios
      */
     public G_Escenarios() {
         initComponents();
@@ -135,7 +135,7 @@ public class G_Escenarios extends javax.swing.JFrame {
     
     
     /**
-     * Método para ir hacia las opciones finales del juego
+     * Método para Salir
      * @param evt 
      */
     private void jButtonHaciaEActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonHaciaEActionPerformed
@@ -151,7 +151,7 @@ public class G_Escenarios extends javax.swing.JFrame {
             dispose();  */  
     }//GEN-LAST:event_jButtonHaciaEActionPerformed
     /**
-     * Método para mostrar el tablero, código generico
+     * Método para mostrar el escenario Generico
      * @param filas
      * @param columnas 
      */
@@ -174,65 +174,32 @@ public class G_Escenarios extends javax.swing.JFrame {
                         juego[i][j]= 1;
                         tablero[i][j] = new Casilla ();
                          tablero[i][j].setBounds((50*j), 50*i, 50, 50);
-                          tablero[i][j]= new CasillaTerreno();
+                          tablero[i][j]= new Casilla_Terreno();
                           break;
                     case 2:
                         juego[i][j]= 2;
                         tablero[i][j] = new Casilla ();
                          tablero[i][j].setBounds((50*j), 50*i, 50, 50);
-                          tablero[i][j]= new CasillaMontaña();
+                          tablero[i][j]= new Casilla_Montaña();
                           break;
                     case 3:
                         juego[i][j]= 3;
                         tablero[i][j] = new Casilla ();
                          tablero[i][j].setBounds((50*j), 50*i, 50, 50);
-                          tablero[i][j]= new CasillaAgua();
+                          tablero[i][j]= new Casilla_Agua();
                     break;
                     default:
                     break;
                     
                 }
-                /*blanco = !blanco;
-                tablero[i][j] = new Casilla ();
-               tablero[i][j].setSize(50, 50);
-                if (blanco)
-                    tablero[i][j].setBackground(Color.white);
-                else
-                    tablero[i][j].setBackground(Color.white);*/
-               // blanco = !blanco;
-             //tablero[i][j]= new CasillaTerreno();
-              // tablero[i][j].setSize(50, 50);
-
-                
-               
-             //   if (blanco)
-               //     tablero[i][j] = new CasillaMontaña();
-              //  else
-                //    tablero[i][j] = new CasillaAgua();
-
-                
                 tablero[i][j].setVisible(true);
 
                 tablero[i][j].setBounds((50*j), 50*i, 50, 50);
                
-
-              //  this.remove(panelTablero);
-               //  this.add(tablero[i][j], BorderLayout.CENTER);
-               //this.add(panelTablero);
-               
-                    panelTablero.add(tablero[i][j]);
-                   //  tablero[i][j].addActioLsitener(accion);
-               //  panelTablero.removeAll();
-       //     panelTablero.validate();
-       panelTablero.updateUI();
-       panelTablero.setLayout(new GridLayout(filas, columnas));
-            panelTablero.repaint();
-         //   tablero[i][j].removeAll();
-           //tablero[i][j].repaint();
-            
-           
-     
-           
+                panelTablero.add(tablero[i][j]);
+                panelTablero.updateUI();
+                panelTablero.setLayout(new GridLayout(filas, columnas));
+                panelTablero.repaint();
             }
            
             blanco = !blanco;
@@ -240,85 +207,22 @@ public class G_Escenarios extends javax.swing.JFrame {
         
         int d = (int) (Math.random()*4);
         int d2 = (int) (Math.random()*4);
-              ImageIcon tanque = new ImageIcon("src/ImagenesD/tanquepequeño.jpg");
-        Icon iconoTanque = new ImageIcon(tanque.getImage().getScaledInstance(50, 50, Image.SCALE_SMOOTH));
+              ImageIcon tanque = new ImageIcon("src/picture/tanque_T.png");
+        Icon iconoTanque = new ImageIcon(tanque.getImage().getScaledInstance(55, 55, Image.SCALE_SMOOTH));
         tablero[d][d2].setIcon(iconoTanque);
         juego[d][d2] = 5;
         
         int a = (int) (Math.random()*4);
         int a2 = (int) (Math.random()*4);
-            ImageIcon avion = new ImageIcon("src/ImagenesD/avionpequeño.jpg");
-        Icon iconoAvion = new ImageIcon(avion.getImage().getScaledInstance(50, 50, Image.SCALE_SMOOTH));
+            ImageIcon avion = new ImageIcon("src/picture/avion_T.png");
+        Icon iconoAvion = new ImageIcon(avion.getImage().getScaledInstance(55, 55, Image.SCALE_SMOOTH));
          tablero[a][a2].setIcon(iconoAvion);
         juego[a][a2] = 4;
         
-        
-        
-    /*tablero = new Casilla[filas][columnas];
-    int contX=-1,contY=-1;
-    for (Casilla[] casillas : tablero) {
-        contX++;
-        for (Casilla casilla : casillas) {
-            contY++;
-            casilla = new Casilla();
-           casilla.setSize(50, 50);
-            //casilla.setVisible(true);
-            casilla.setBounds((30), (30), 30, 30);
-            panelTablero.add(casilla);
-            panelTablero.validate();
-            panelTablero.repaint();
-           
-        }
-        
-    }*/
 }
     
-     /*public void hola( Casilla tablero){
-            
-         if(!gano){
-             if(tablero.equals(""))
-             {
-              if(turno*2 == 1)   {
-                  tablero.getIcon("X");
-                  
-                  
-              }
-             }
-         }
-             
-         
-         
-         
-        }*/
-    /*public int lanzardado(){
-        int numero = 0;
-        do{
-            numero = (int) (Math.random()*10);
-            
-                   
-                   
-            
-            
-            
-            
-        }while(numero<1 || numero>6);
-        
-        
-        
-        
-      return numero;
-      
-      
-      
-    } 
-    public void generar(){
-        for (int i = 0; i < 10; i++) {
-            
-        }
-        
-    }    */
     /**
-     * Método de prueba para numeros random
+     * Método para Generar Randoms
      * @param N
      * @param M 
      */

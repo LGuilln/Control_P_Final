@@ -25,11 +25,22 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import static window.Bienvenida.pathPersona;
 import clases.HTML;
+import static window.Registro.M_1;
+import static window.Registro.M_2;
+import static window.Registro.M_3;
+import static window.Registro.Partidas;
+import static window.Registro.list;
+import static window.Registro.nickname;
+import static window.Registro.sur;
+import static window.Registro.v_1;
+import static window.Registro.v_2;
+import static window.Registro.v_3;
+
 /**
  *
  * @author luedu
  */
-public class Registro extends javax.swing.JFrame {
+public class Registro2P extends javax.swing.JFrame {
 
     public static LinkedList list = new LinkedList();
     public int buscar;
@@ -43,7 +54,7 @@ public class Registro extends javax.swing.JFrame {
   //  String ubicacion = System.getProperty("user.dir" + barra+ "\\Registros"+barra);
    
     
-    public Registro() {
+    public Registro2P() {
         initComponents();
         this.setLocationRelativeTo(null);
  
@@ -91,13 +102,14 @@ public class Registro extends javax.swing.JFrame {
  * Método para C_Binario
  * @param evt 
  */
-   public void createBin(){
+ 
+    public void createBin(){
         ObjectOutputStream binario = null;
         try {
             String nameFile = nickname.getText();
             File file = new File(nameFile);
             Persona persona = (Persona) list.getLast();
-           
+            
             binario = new ObjectOutputStream(new FileOutputStream(pathPersona+persona.getNombre()+".person"));
             binario.writeObject(persona);
             
@@ -108,35 +120,13 @@ public class Registro extends javax.swing.JFrame {
             try {
                 binario.close();
             } catch (IOException ex) {
-                Logger.getLogger(Registro.class.getName()).log(Level.SEVERE, null, ex);
+                Logger.getLogger(Registro2P.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
         
     }
-     
-   /*    public void createBin_Par(){
-        ObjectOutputStream binario = null;
-        try {
-            String nameFile = nickname.getText();
-            File file_par = new File(nameFile);
-            Persona partidas = (Persona) list.getLast();
-            
-            binario = new ObjectOutputStream(new FileOutputStream(pathPartidas+partidas.getNombre()+".partidas"));
-            binario.writeObject(partidas);
-            
-        } catch (Exception ex) {
-            ex.printStackTrace();
-           // Logger.getLogger(Registro.class.getName()).log(Level.SEVERE, null, ex);
-        } finally {
-            try {
-                binario.close();
-            } catch (IOException ex) {
-                Logger.getLogger(Registro.class.getName()).log(Level.SEVERE, null, ex);
-            }
-        }
-    }    /*/
     
-   public void reportes(){
+    public void reportes(){
         
                   try {
               FileWriter jj = new FileWriter(lista);
@@ -159,15 +149,15 @@ public class Registro extends javax.swing.JFrame {
           } catch (Exception e) {
               
           }
-    }   
- 
+    }
+    
     
     public Image getIconImage() {
         Image retValue = Toolkit.getDefaultToolkit().getImage(ClassLoader.getSystemResource("lueduardogr/picture/iconin.png"));
         return retValue;
     }
     public void contador(){
-        Partidas.setText(Integer.toString(cont));
+        jTextField1.setText(Integer.toString(cont));
     }
     /**
      * This method is called from within the constructor to initialize the form.
@@ -178,11 +168,11 @@ public class Registro extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        Partidas = new javax.swing.JTextField();
+        jTextField1 = new javax.swing.JTextField();
         jlNickname = new javax.swing.JLabel();
         Back = new javax.swing.JButton();
         jLabel4 = new javax.swing.JLabel();
-        Jugar = new javax.swing.JButton();
+        Jugador2 = new javax.swing.JButton();
         jButton3Reportes = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
         nickname = new javax.swing.JTextField();
@@ -205,15 +195,15 @@ public class Registro extends javax.swing.JFrame {
         setUndecorated(true);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        Partidas.setEditable(false);
-        Partidas.setFont(new java.awt.Font("Arial Black", 0, 14)); // NOI18N
-        Partidas.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        Partidas.addActionListener(new java.awt.event.ActionListener() {
+        jTextField1.setEditable(false);
+        jTextField1.setFont(new java.awt.Font("Arial Black", 0, 14)); // NOI18N
+        jTextField1.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        jTextField1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                PartidasActionPerformed(evt);
+                jTextField1ActionPerformed(evt);
             }
         });
-        getContentPane().add(Partidas, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 100, 30, 30));
+        getContentPane().add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 100, 30, 30));
 
         jlNickname.setBackground(new java.awt.Color(102, 255, 102));
         jlNickname.setFont(new java.awt.Font("Arial Black", 0, 24)); // NOI18N
@@ -240,17 +230,17 @@ public class Registro extends javax.swing.JFrame {
         jLabel4.setText("Vehiculo 3:");
         getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 430, 220, -1));
 
-        Jugar.setBackground(new java.awt.Color(102, 255, 102));
-        Jugar.setFont(new java.awt.Font("Arial Black", 0, 18)); // NOI18N
-        Jugar.setForeground(new java.awt.Color(255, 0, 51));
-        Jugar.setText("Jugar");
-        Jugar.setActionCommand("Ver Reportes");
-        Jugar.addActionListener(new java.awt.event.ActionListener() {
+        Jugador2.setBackground(new java.awt.Color(102, 255, 102));
+        Jugador2.setFont(new java.awt.Font("Arial Black", 0, 18)); // NOI18N
+        Jugador2.setForeground(new java.awt.Color(255, 0, 51));
+        Jugador2.setText("2 Jugador");
+        Jugador2.setActionCommand("Ver Reportes");
+        Jugador2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                JugarActionPerformed(evt);
+                Jugador2ActionPerformed(evt);
             }
         });
-        getContentPane().add(Jugar, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 620, -1, -1));
+        getContentPane().add(Jugador2, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 620, -1, -1));
 
         jButton3Reportes.setBackground(new java.awt.Color(102, 255, 102));
         jButton3Reportes.setFont(new java.awt.Font("Arial Black", 0, 18)); // NOI18N
@@ -261,7 +251,7 @@ public class Registro extends javax.swing.JFrame {
                 jButton3ReportesActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton3Reportes, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 620, 170, -1));
+        getContentPane().add(jButton3Reportes, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 620, 170, -1));
 
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/register.jpg"))); // NOI18N
         getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 50, -1, -1));
@@ -390,17 +380,17 @@ public class Registro extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton3ReportesActionPerformed
 
     
-    private void JugarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JugarActionPerformed
-        cont++;
+    private void Jugador2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Jugador2ActionPerformed
+      //  cont++;
         this.setVisible(false); 
-        new G_Escenarios().setVisible(true);
+        new Registro().setVisible(true);
         
              
   
 
         
 // TODO add your handling code here:
-    }//GEN-LAST:event_JugarActionPerformed
+    }//GEN-LAST:event_Jugador2ActionPerformed
 
  /**
  * Método para guardar
@@ -408,7 +398,7 @@ public class Registro extends javax.swing.JFrame {
  */
  
     private void SaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SaveActionPerformed
-     contador();
+       contador();
      cont++;
      String nombre = nickname.getText();
      String v1 = v_1.getText();
@@ -449,7 +439,7 @@ public class Registro extends javax.swing.JFrame {
     private void CleanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CleanActionPerformed
 
        this.setVisible(false);
-       new Registro().setVisible(true);
+       new Registro2P().setVisible(true);
         
 // TODO add your handling code here:
     }//GEN-LAST:event_CleanActionPerformed
@@ -482,9 +472,9 @@ public class Registro extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_CB1ActionPerformed
 
-    private void PartidasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PartidasActionPerformed
+    private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_PartidasActionPerformed
+    }//GEN-LAST:event_jTextField1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -503,14 +493,18 @@ public class Registro extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Registro.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Registro2P.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Registro.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Registro2P.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Registro.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Registro2P.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Registro.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Registro2P.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
         //</editor-fold>
@@ -519,7 +513,7 @@ public class Registro extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new Registro().setVisible(true);
+                new Registro2P().setVisible(true);
             }
         });
     }
@@ -530,11 +524,10 @@ public class Registro extends javax.swing.JFrame {
     public static javax.swing.JComboBox<String> CB2;
     public static javax.swing.JComboBox<String> CB3;
     private javax.swing.JButton Clean;
-    private javax.swing.JButton Jugar;
+    private javax.swing.JButton Jugador2;
     public static javax.swing.JTextField M_1;
     public static javax.swing.JTextField M_2;
     public static javax.swing.JTextField M_3;
-    public static javax.swing.JTextField Partidas;
     private javax.swing.JButton Save;
     private javax.swing.JButton jButton3Reportes;
     public static javax.swing.JLabel jLabel1;
@@ -542,6 +535,7 @@ public class Registro extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
+    private javax.swing.JTextField jTextField1;
     private javax.swing.JLabel jlNickname;
     public static javax.swing.JTextField nickname;
     public static javax.swing.JTextField v_1;

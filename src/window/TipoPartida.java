@@ -9,12 +9,12 @@ package window;
  *
  * @author luedu
  */
-public class Option extends javax.swing.JFrame {
+public class TipoPartida extends javax.swing.JFrame {
 
     /**
      * Creates new form Inicio1
      */
-    public Option() {
+    public TipoPartida() {
         initComponents();
         this.setLocationRelativeTo(null);
 
@@ -29,35 +29,34 @@ public class Option extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        BNuevo = new javax.swing.JButton();
-        BCargar = new javax.swing.JButton();
+        P_1 = new javax.swing.JButton();
+        P_2 = new javax.swing.JButton();
         Bback = new javax.swing.JButton();
-        Tienda = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        BNuevo.setBackground(new java.awt.Color(102, 255, 0));
-        BNuevo.setFont(new java.awt.Font("Arial Black", 1, 18)); // NOI18N
-        BNuevo.setText("Nueva Partida");
-        BNuevo.addActionListener(new java.awt.event.ActionListener() {
+        P_1.setBackground(new java.awt.Color(102, 255, 0));
+        P_1.setFont(new java.awt.Font("Arial Black", 1, 18)); // NOI18N
+        P_1.setText("1 Jugador");
+        P_1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BNuevoActionPerformed(evt);
+                P_1ActionPerformed(evt);
             }
         });
-        getContentPane().add(BNuevo, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 180, 230, 50));
+        getContentPane().add(P_1, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 210, 230, 50));
 
-        BCargar.setBackground(new java.awt.Color(102, 255, 0));
-        BCargar.setFont(new java.awt.Font("Arial Black", 1, 18)); // NOI18N
-        BCargar.setText("Cargar Partida");
-        BCargar.addActionListener(new java.awt.event.ActionListener() {
+        P_2.setBackground(new java.awt.Color(102, 255, 0));
+        P_2.setFont(new java.awt.Font("Arial Black", 1, 18)); // NOI18N
+        P_2.setText("2 Jugadores");
+        P_2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BCargarActionPerformed(evt);
+                P_2ActionPerformed(evt);
             }
         });
-        getContentPane().add(BCargar, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 300, 230, 50));
+        getContentPane().add(P_2, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 350, 230, 50));
 
         Bback.setBackground(new java.awt.Color(102, 255, 0));
         Bback.setFont(new java.awt.Font("Arial Black", 1, 18)); // NOI18N
@@ -69,69 +68,35 @@ public class Option extends javax.swing.JFrame {
         });
         getContentPane().add(Bback, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 690, 100, 50));
 
-        Tienda.setBackground(new java.awt.Color(102, 255, 0));
-        Tienda.setFont(new java.awt.Font("Arial Black", 1, 18)); // NOI18N
-        Tienda.setText("Tienda");
-        Tienda.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                TiendaActionPerformed(evt);
-            }
-        });
-        getContentPane().add(Tienda, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 430, 230, 50));
-
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/Descargar Pack Fondos de Pantalla Mejores juegos (310)4.jpg"))); // NOI18N
         getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 950, 860));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void BNuevoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BNuevoActionPerformed
+    private void P_1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_P_1ActionPerformed
         this.setVisible(false);
-        new TipoPartida().setVisible(true);
+        new Registro().setVisible(true);
       //  new NewJFrame().setVisible(true);
 
-    }//GEN-LAST:event_BNuevoActionPerformed
+    }//GEN-LAST:event_P_1ActionPerformed
 
  /**
  * Método para Cargar Partidas
  * @param evt 
  */
  
-    private void BCargarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BCargarActionPerformed
-        
-      Registro principa2 = new Registro();
-      principa2.show();
-      principa2.setVisible(false);
-      
-      Estadisticas principa3 = new Estadisticas();
-      principa3.show();
-      principa3.setVisible(false);
-      
-      
-      Save_Partidas principal = new Save_Partidas();
-      principal.show();
-      this.setVisible(false); 
-        // TODO add your handling code here:
-    }//GEN-LAST:event_BCargarActionPerformed
+    private void P_2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_P_2ActionPerformed
+       this.setVisible(false);
+       new Registro2P().setVisible(true);
+         
+ 
+    }//GEN-LAST:event_P_2ActionPerformed
 
     private void BbackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BbackActionPerformed
         this.setVisible(false);
         new Bienvenida().setVisible(true);// TODO add your handling code here:
     }//GEN-LAST:event_BbackActionPerformed
-
- /**
- * Método para ir a Tienda
- * @param evt 
- */
- 
-    private void TiendaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TiendaActionPerformed
-   
-        this.setVisible(false);
-        new Tienda().setVisible(true);// TODO add your handling code here:
-   
-        
-        // TODO add your handling code here:
-    }//GEN-LAST:event_TiendaActionPerformed
 
     /**
      * @param args the command line arguments
@@ -150,14 +115,26 @@ public class Option extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Option.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(TipoPartida.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Option.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(TipoPartida.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Option.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(TipoPartida.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Option.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(TipoPartida.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
         //</editor-fold>
@@ -166,16 +143,15 @@ public class Option extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new Option().setVisible(true);
+                new TipoPartida().setVisible(true);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton BCargar;
-    private javax.swing.JButton BNuevo;
     private javax.swing.JButton Bback;
-    private javax.swing.JButton Tienda;
+    private javax.swing.JButton P_1;
+    private javax.swing.JButton P_2;
     private javax.swing.JLabel jLabel1;
     // End of variables declaration//GEN-END:variables
 }

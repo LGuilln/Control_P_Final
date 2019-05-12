@@ -13,11 +13,15 @@ import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.GridLayout;
 import java.awt.Image;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.util.Random;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JDialog;
+import javax.swing.JOptionPane;
+
 
 /**
  *
@@ -26,8 +30,11 @@ import javax.swing.JDialog;
 public class G_Escenarios extends javax.swing.JFrame {
     int turno, contp, contmp;
     boolean gano= false;
-    
+    int largo, alto;
+    int pos1, pos2, filaVehiculos, columnaVehiculo;
+            
   Escenario_E[][] tablero;
+  int[][] juego =null;
     /**
      * constructor
      * Creates new form Escenarios
@@ -36,9 +43,37 @@ public class G_Escenarios extends javax.swing.JFrame {
         initComponents();
          this.setLocationRelativeTo(null);
           turno = contp = contmp = 1;
+          
         //tablero = new Casilla[8][8];
-           
-     
+    }
+    
+        public void mover(int fe, int ce, int fv, int cv){
+        if(fe==fv || ce==cv){
+            /*
+            if(fe<fv){
+                Izquierda(total, fe, ce);
+            }else if(fe>fv){
+                Derecha(total, fe, ce);
+            }else if(ce<cv){
+                Arriba(total, fe, ce);
+            }else if(ce>cv){
+                Abajo(total, fe, ce);
+            }else{}
+            */
+        }else{
+            JOptionPane.showMessageDialog(null, "Movimiento Invalido");
+        }
+    }
+    
+    
+    private void Tablero() {
+        
+            for (int fila = 0; fila < largo; fila++) {
+            System.out.println("");
+            for (int columna = 0; columna < alto; columna++) {
+                System.out.print(juego[fila][columna] + ", ");
+            }
+        }
     }
 
     /**
@@ -50,6 +85,7 @@ public class G_Escenarios extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jButtonAtras = new javax.swing.JButton();
         jButtonDados = new javax.swing.JButton();
         jButtonHaciaE = new javax.swing.JButton();
         jLabel4 = new javax.swing.JLabel();
@@ -62,6 +98,17 @@ public class G_Escenarios extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jButtonAtras.setBackground(new java.awt.Color(255, 255, 255));
+        jButtonAtras.setFont(new java.awt.Font("Dubai", 3, 24)); // NOI18N
+        jButtonAtras.setForeground(new java.awt.Color(0, 255, 0));
+        jButtonAtras.setText("Back");
+        jButtonAtras.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonAtrasActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jButtonAtras, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 850, 100, 40));
 
         jButtonDados.setBackground(new java.awt.Color(255, 255, 255));
         jButtonDados.setFont(new java.awt.Font("Dubai", 3, 24)); // NOI18N
@@ -153,10 +200,9 @@ public class G_Escenarios extends javax.swing.JFrame {
      * @param evt 
      */
     private void jButtonHaciaEActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonHaciaEActionPerformed
-
        this.setVisible(false);
-       System.exit(0);
-         
+       new Bienvenida().setVisible(true);
+   
         //new OpcionesFinales().setVisible(true);
      /*   
         OpcionesFinales entrada3 = new OpcionesFinales();
@@ -171,10 +217,11 @@ public class G_Escenarios extends javax.swing.JFrame {
      */
     public void gTablero(int filas, int columnas){
     BorderLayout b = new BorderLayout();
-    
+    largo=filas;
+    alto=columnas;
  
         tablero =  new Escenario_E[filas][columnas];
-        int[][] juego = new int[filas][columnas];
+        juego = new int[filas][columnas];
         Random n = new Random();
          boolean blanco = true;
          System.out.println("filas" + filas);
@@ -206,6 +253,8 @@ public class G_Escenarios extends javax.swing.JFrame {
                     break;
                     
                 }
+                 Pieza accion = new Pieza();
+                tablero[i][j].addActionListener(accion);
                 tablero[i][j].setVisible(true);
 
                 tablero[i][j].setBounds((50*j), 50*i, 50, 50);
@@ -221,27 +270,81 @@ public class G_Escenarios extends javax.swing.JFrame {
         
         int d = (int) (Math.random()*4);
         int d2 = (int) (Math.random()*4);
-              ImageIcon tanque = new ImageIcon("src/picture/tanque_T.png");
+        ImageIcon tanque = new ImageIcon("src/picture/tanque_T.png");
         Icon iconoTanque = new ImageIcon(tanque.getImage().getScaledInstance(55, 55, Image.SCALE_SMOOTH));
         tablero[d][d2].setIcon(iconoTanque);
         juego[d][d2] = 5;
+        filaVehiculos=d;
+        columnaVehiculo=d2;
         
-        int a = (int) (Math.random()*4);
+        int a =  (int) (Math.random()*4);
         int a2 = (int) (Math.random()*4);
-            ImageIcon avion = new ImageIcon("src/picture/avion_T.png");
+        ImageIcon avion = new ImageIcon("src/picture/avion_T.png");
         Icon iconoAvion = new ImageIcon(avion.getImage().getScaledInstance(55, 55, Image.SCALE_SMOOTH));
-         tablero[a][a2].setIcon(iconoAvion);
+        tablero[a][a2].setIcon(iconoAvion);
         juego[a][a2] = 4;
         
         int c = (int) (Math.random()*4);
         int c2 = (int) (Math.random()*4);
-            ImageIcon comodin = new ImageIcon("src/picture/clean.jpg");
+            ImageIcon comodin = new ImageIcon("src/picture/gift.png");
         Icon iconoComodin = new ImageIcon(comodin.getImage().getScaledInstance(45, 45, Image.SCALE_SMOOTH));
          tablero[c][c2].setIcon(iconoComodin);
         juego[c][c2] = 4;
         
         
+        Tablero();
 }
+    
+        private class Pieza implements ActionListener {
+
+        int vida=100;
+        
+        @Override
+        public void actionPerformed(ActionEvent click) {
+            for (int fila1 = 0; fila1 < largo; fila1++) {
+                for (int columna = 0; columna < alto; columna++) {
+                    if (click.getSource().equals(tablero[fila1][columna])) {
+                       
+                        pos1 = fila1;
+                        pos2 = columna;
+                        int f;
+                            switch(juego[fila1][columna]){
+                                case 1:
+                                    //Distancia(pos1, pos2, filaVehiculos, columnaVehiculo);
+                                    mover(pos1, pos2, filaVehiculos, columnaVehiculo);
+                                    break;
+                                case 2:
+                                    f = (int)(Math.random()*100);
+                                    vida=vida-f;
+                                    vidas(fila1, columna);
+                                    break;
+                                case 3:
+                                    f = (int)(Math.random()*100);
+                                    vida=vida-f;
+                                    vidas(fila1, columna);
+                                    break;
+                        }             
+                        
+                        System.out.println(tablero[fila1][columna].getColorModel());
+                        System.out.println("Fila " + fila1 + " Columna " + columna);
+                        System.out.println(juego[fila1][columna]);
+
+
+                    }
+                }
+            }
+        }
+
+        private void vidas(int fila1, int columna){
+            if(vida<=0){
+                juego[fila1][columna] = 1;
+                tablero[fila1][columna].setBackground(Color.gray);
+            }else{}
+        }
+    }
+
+    
+    
     
     /**
      * Método para Generar Randoms
@@ -256,33 +359,40 @@ public class G_Escenarios extends javax.swing.JFrame {
         
     }
     
+    
     private void jButton4x4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4x4ActionPerformed
-        // TODO add your handling code here:
-        /*ImageIcon tanque = new ImageIcon("src/ImagenesD/tanquepequeño.jpg");
-        Icon iconoTanque = new ImageIcon(tanque.getImage().getScaledInstance(50, 50, Image.SCALE_SMOOTH));
-        tablero[filas][columnas].setIcon(iconoTanque);
-        juego[filas][columnas] = 2;*/
-        
+        panelTablero.removeAll();
+        jButton6x4.setVisible(false);
+        jButton8x9.setVisible(false);
         gTablero(4, 4);
        
         
     }//GEN-LAST:event_jButton4x4ActionPerformed
 
     private void jButton6x4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6x4ActionPerformed
-        // TODO add your handling code here:  
-       
+        jButton4x4.setVisible(false);
+        jButton8x9.setVisible(false);
+       panelTablero.removeAll();
         gTablero(6, 4);
     }//GEN-LAST:event_jButton6x4ActionPerformed
 
     private void jButton8x9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton8x9ActionPerformed
-        // TODO add your handling code here:
-         
+         panelTablero.removeAll();
+         jButton4x4.setVisible(false);
+         jButton6x4.setVisible(false);
         gTablero(8, 9);
     }//GEN-LAST:event_jButton8x9ActionPerformed
 
     private void jButtonDadosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonDadosActionPerformed
        new Elegir_Dados().setVisible(true);       
     }//GEN-LAST:event_jButtonDadosActionPerformed
+
+    private void jButtonAtrasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAtrasActionPerformed
+       this.setVisible(false);
+       new TipoPartida().setVisible(true);
+        
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButtonAtrasActionPerformed
 
     /**
      * @param args the command line arguments
@@ -311,6 +421,8 @@ public class G_Escenarios extends javax.swing.JFrame {
         }
         //</editor-fold>
         //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
@@ -324,6 +436,7 @@ public class G_Escenarios extends javax.swing.JFrame {
     private javax.swing.JButton jButton4x4;
     private javax.swing.JButton jButton6x4;
     private javax.swing.JButton jButton8x9;
+    private javax.swing.JButton jButtonAtras;
     private javax.swing.JButton jButtonDados;
     private javax.swing.JButton jButtonHaciaE;
     private javax.swing.JLabel jLabel4;

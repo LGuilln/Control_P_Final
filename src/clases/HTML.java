@@ -14,21 +14,22 @@ import clases.Persona;
  */
 public class HTML implements Serializable{
 
-    int No;
-    String nombre;
-    String v1;
-    String v2;
-    String v3;
-    String salida;
-    String filatxt;
-    String cola;
+    public int No;
+    public String nombre;
+    public String v1;
+    public String v2;
+    public String v3;
+    public String salida;
+    public String filatxt;
+    public String cola;
     
     public  HTML(){
     }
+    
     public void generarEncabezado(String Titulo){
         salida = "<html>\n";
-        salida = "\n<tr>\n";
-        salida +="<td>+p1+<td\n>";
+        salida+="<head><title>"+Titulo+"</title></head>\n"+"<body>\n";
+        salida+="<h1>"+Titulo+"</h1>\n"+"<table>\n";
         salida+="<tr>\n";
     }
     
@@ -37,15 +38,16 @@ public class HTML implements Serializable{
         salida+="<td><strong>"+p2+"</strong></td>\n";
         salida+="<td><strong>"+p3+"</strong></td>\n";
         salida+="<td><strong>"+p4+"</strong></td>\n";
-        salida+="<tr>";
+        salida+="</tr>";
     }
     
-    public void generarFilaHTML(String p1, String p2, String p3){
+    public void generarFilaHTML(String p1, String p2, String p3,String p4){
         filatxt="";
         filatxt="\n<tr>\n";
-        filatxt+="<td><strong>"+p1+"</strong></td>\n";
-        filatxt+="<td><strong>"+p2+"</strong></td>\n";
-        filatxt+="<td><strong>"+p3+"</strong></td>\n";
+        filatxt+="<td>"+p1+"</td>\n";
+        filatxt+="<td>"+p2+"</td>\n";
+        filatxt+="<td>"+p3+"</td>\n";
+        filatxt+="<td>"+p4+"</td>\n";
         filatxt+="</tr>\n";
     }
     public void generarCola(){

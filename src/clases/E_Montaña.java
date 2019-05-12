@@ -11,10 +11,10 @@ import java.awt.Color;
  *
  * @author luedu
  */
-public class Casilla_Montaña extends Casilla{
+public class E_Montaña extends Escenario_E{
 
     
-     public Casilla_Montaña(){
+     public E_Montaña(){
     
         this.setBackground(Color.green);
 }

@@ -279,7 +279,7 @@ public void CargarRegistrar(){
 
     private void ImportActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ImportActionPerformed
 
-        String filePath = "C:\\Users\\luedu\\Documents\\NetBeansProjects\\P_Final\\file(Tanques).txt";
+        String filePath = "C:\\Users\\luedu\\Documents\\NetBeansProjects\\P_Final\\file(Tanques).html";
         File file = new File(filePath);
         try {
             FileWriter fw = new FileWriter(file);

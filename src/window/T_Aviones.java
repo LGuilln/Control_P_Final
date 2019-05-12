@@ -281,7 +281,7 @@ public void CargarRegistrar(){
 
     private void ImportActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ImportActionPerformed
 
-        String filePath = "C:\\Users\\luedu\\Documents\\NetBeansProjects\\P_Final\\file(Aviones).txt";
+        String filePath = "C:\\Users\\luedu\\Documents\\NetBeansProjects\\P_Final\\file(Aviones).html";
         File file = new File(filePath);
         try {
             FileWriter fw = new FileWriter(file);

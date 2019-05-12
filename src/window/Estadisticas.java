@@ -5,6 +5,7 @@
  */
 package window;
 
+import clases.HTML;
 import clases.Persona;
 import java.io.BufferedWriter;
 import java.io.File;
@@ -12,6 +13,8 @@ import java.io.FileInputStream;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.ObjectInputStream;
+import java.io.Serializable;
+import java.util.LinkedList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
@@ -22,14 +25,16 @@ import static window.Registro.nickname;
 
 /**
  *
- * @author danie
+ * @author luedu
  */
-public class Estadisticas extends javax.swing.JFrame {
+public class Estadisticas extends javax.swing.JFrame implements Serializable {
    
+    
     private DefaultTableModel modelo;
     int cont = 0;
 
-
+    public static LinkedList contenedor = new LinkedList();    
+    HTML ht = new HTML();
     /**
      * Creates new form Estadisticas
      */
@@ -117,6 +122,21 @@ public class Estadisticas extends javax.swing.JFrame {
                 }
             }
     
+    /*/    public void generarEncabezado(String Titulo){
+        String salida = "<html>\n";
+        salida = "\n<tr>\n";
+        salida +="<td>+p1+<td\n>";
+        salida+="<tr>\n";
+    }
+    
+            
+   /* private void html1(){
+        try{
+            FileWriter jugadores=new FileWriter(reportPersonas);
+            BufferedWriter bw = new BufferedWriter(jugadores);
+            
+        } 
+    }   /*     
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -249,6 +269,11 @@ public class Estadisticas extends javax.swing.JFrame {
     }//GEN-LAST:event_jButtonBack1AncestorAdded
 
     private void jButtonBack1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonBack1ActionPerformed
+       
+        HTML html = new HTML();
+           
+// new html().setVisible(true);
+        
         this.setVisible(false);
         new Option().setVisible(true);
         //new interfaz().setVisible(true);
@@ -300,26 +325,52 @@ public class Estadisticas extends javax.swing.JFrame {
  */
  
     private void ImportActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ImportActionPerformed
-        
-        String filePath = "C:\\Users\\luedu\\Documents\\NetBeansProjects\\P_Final\\File(Users).txt";
+      
+        String filePath = "C:\\Users\\luedu\\Documents\\NetBeansProjects\\P_Final\\file(Users).html";
         File file = new File(filePath);
         try {
             FileWriter fw = new FileWriter(file);
             BufferedWriter bw = new BufferedWriter(fw);
-            
+
             for(int i = 0; i < jTableEstadisticas.getRowCount(); i++){//rows
-            for(int j = 0; j < jTableEstadisticas.getColumnCount(); j++){//columns
-            bw.write(jTableEstadisticas.getValueAt(i, j).toString()+" ");
+                for(int j = 0; j < jTableEstadisticas.getColumnCount(); j++){//columns
+                    bw.write(jTableEstadisticas.getValueAt(i, j).toString()+" ");
+                }
+                bw.newLine();
             }
-            bw.newLine();
-            }
-            
+
             bw.close();
             fw.close();
+
+        } catch (IOException ex) {
+            Logger.getLogger(T_Armas.class.getName()).log(Level.SEVERE, null, ex);
+        }
+       /*/String nombre = "C:\\Users\\luedu\\Documents\\NetBeansProjects\\P_Final\\File(Users).html";
+        File file = new File(nombre);
+        
+        try {
+                FileWriter fw = new FileWriter(file); 
+                BufferedWriter bw = new BufferedWriter(fw);
+                ht.generarEncabezado(nombre);
+                ht.generarpestania("nombre", "v1", "v2","v3");
+                bw.write(ht.salida);
+                bw.newLine();
+                
+                for(int i = 0; i < jTableEstadisticas.getRowCount(); i++){//rows
+                    ht.generarFilaHTML(nombre, nombre, nombre);
+                    bw.newLine();
+                    for(int j = 0; j < jTableEstadisticas.getColumnCount(); j++){//columns
+                        bw.write(jTableEstadisticas.getValueAt(i, j).toString()+" ");
+                    }
+                    bw.newLine();
+                }
+                
+                bw.close();
+            
             
         } catch (IOException ex) {
             Logger.getLogger(Estadisticas.class.getName()).log(Level.SEVERE, null, ex);
-        }
+        }*/
     }//GEN-LAST:event_ImportActionPerformed
 
     /**

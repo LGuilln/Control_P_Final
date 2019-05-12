@@ -5,10 +5,10 @@
  */
 package window;
 
-import clases.Casilla;
-import clases.Casilla_Montaña;
-import clases.Casilla_Agua;
-import clases.Casilla_Terreno;
+import clases.Escenario_E;
+import clases.E_Montaña;
+import clases.E_Agua;
+import clases.E_Terreno;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.GridLayout;
@@ -17,6 +17,7 @@ import java.util.Random;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
+import javax.swing.JDialog;
 
 /**
  *
@@ -26,7 +27,7 @@ public class G_Escenarios extends javax.swing.JFrame {
     int turno, contp, contmp;
     boolean gano= false;
     
-  Casilla[][] tablero;
+  Escenario_E[][] tablero;
     /**
      * constructor
      * Creates new form Escenarios
@@ -49,6 +50,7 @@ public class G_Escenarios extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jButtonDados = new javax.swing.JButton();
         jButtonHaciaE = new javax.swing.JButton();
         jLabel4 = new javax.swing.JLabel();
         jButton8x9 = new javax.swing.JButton();
@@ -58,7 +60,19 @@ public class G_Escenarios extends javax.swing.JFrame {
         lblImg = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setUndecorated(true);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jButtonDados.setBackground(new java.awt.Color(255, 255, 255));
+        jButtonDados.setFont(new java.awt.Font("Dubai", 3, 24)); // NOI18N
+        jButtonDados.setForeground(new java.awt.Color(51, 51, 51));
+        jButtonDados.setText("Dado");
+        jButtonDados.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonDadosActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jButtonDados, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 660, 100, 40));
 
         jButtonHaciaE.setBackground(new java.awt.Color(255, 255, 255));
         jButtonHaciaE.setFont(new java.awt.Font("Dubai", 3, 24)); // NOI18N
@@ -159,7 +173,7 @@ public class G_Escenarios extends javax.swing.JFrame {
     BorderLayout b = new BorderLayout();
     
  
-        tablero =  new Casilla[filas][columnas];
+        tablero =  new Escenario_E[filas][columnas];
         int[][] juego = new int[filas][columnas];
         Random n = new Random();
          boolean blanco = true;
@@ -172,21 +186,21 @@ public class G_Escenarios extends javax.swing.JFrame {
                 switch(c){
                     case 1: 
                         juego[i][j]= 1;
-                        tablero[i][j] = new Casilla ();
+                        tablero[i][j] = new Escenario_E ();
                          tablero[i][j].setBounds((50*j), 50*i, 50, 50);
-                          tablero[i][j]= new Casilla_Terreno();
+                          tablero[i][j]= new E_Terreno();
                           break;
                     case 2:
                         juego[i][j]= 2;
-                        tablero[i][j] = new Casilla ();
+                        tablero[i][j] = new Escenario_E ();
                          tablero[i][j].setBounds((50*j), 50*i, 50, 50);
-                          tablero[i][j]= new Casilla_Montaña();
+                          tablero[i][j]= new E_Montaña();
                           break;
                     case 3:
                         juego[i][j]= 3;
-                        tablero[i][j] = new Casilla ();
+                        tablero[i][j] = new Escenario_E ();
                          tablero[i][j].setBounds((50*j), 50*i, 50, 50);
-                          tablero[i][j]= new Casilla_Agua();
+                          tablero[i][j]= new E_Agua();
                     break;
                     default:
                     break;
@@ -218,6 +232,14 @@ public class G_Escenarios extends javax.swing.JFrame {
         Icon iconoAvion = new ImageIcon(avion.getImage().getScaledInstance(55, 55, Image.SCALE_SMOOTH));
          tablero[a][a2].setIcon(iconoAvion);
         juego[a][a2] = 4;
+        
+        int c = (int) (Math.random()*4);
+        int c2 = (int) (Math.random()*4);
+            ImageIcon comodin = new ImageIcon("src/picture/clean.jpg");
+        Icon iconoComodin = new ImageIcon(comodin.getImage().getScaledInstance(45, 45, Image.SCALE_SMOOTH));
+         tablero[c][c2].setIcon(iconoComodin);
+        juego[c][c2] = 4;
+        
         
 }
     
@@ -257,6 +279,10 @@ public class G_Escenarios extends javax.swing.JFrame {
          
         gTablero(8, 9);
     }//GEN-LAST:event_jButton8x9ActionPerformed
+
+    private void jButtonDadosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonDadosActionPerformed
+       new Elegir_Dados().setVisible(true);       
+    }//GEN-LAST:event_jButtonDadosActionPerformed
 
     /**
      * @param args the command line arguments
@@ -298,6 +324,7 @@ public class G_Escenarios extends javax.swing.JFrame {
     private javax.swing.JButton jButton4x4;
     private javax.swing.JButton jButton6x4;
     private javax.swing.JButton jButton8x9;
+    private javax.swing.JButton jButtonDados;
     private javax.swing.JButton jButtonHaciaE;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel lblImg;

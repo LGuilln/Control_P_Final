@@ -11,11 +11,11 @@ import java.awt.Color;
  *
  * @author luedu
  */
-public class Casilla_Agua extends Casilla {
+public class E_Agua extends Escenario_E {
  
 
    
-public Casilla_Agua(){
+public E_Agua(){
     
         this.setBackground(Color.blue);
 }

@@ -11,8 +11,8 @@ import java.awt.Color;
  *
  * @author luedu
  */
-public class Casilla_Terreno extends Casilla{
-    public Casilla_Terreno(){
+public class E_Terreno extends Escenario_E{
+    public E_Terreno(){
         this.setBackground(Color.gray);
     }
     

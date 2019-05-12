@@ -11,7 +11,7 @@ import javax.swing.JButton;
  *
  * @author luedu
  */
-public class Casilla extends JButton {
+public class Escenario_E extends JButton {
     
     private Usuario usuario;
     

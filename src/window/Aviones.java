@@ -6,8 +6,11 @@
 package window;
 
 import clases.Aviones_C;
+import clases.HTML_V;
+import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileOutputStream;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.io.ObjectOutputStream;
 import java.util.LinkedList;
@@ -25,7 +28,16 @@ public class Aviones extends javax.swing.JFrame {
     
     public static LinkedList contenedor_avion = new LinkedList();
     public int buscar;
-  
+    
+    
+    
+    public static ArrayList<Aviones_C> avv = new ArrayList<>();
+    File lista_av = new File("Listado de Aviones.html");
+    
+    
+    HTML_V ht = new HTML_V();
+    
+   
 
     /**
      * Creates new form Inicio1
@@ -49,18 +61,43 @@ public class Aviones extends javax.swing.JFrame {
             binario = new ObjectOutputStream(new FileOutputStream(pathAviones+Airplane.getAvion()+".avion"));
             binario.writeObject(Airplane);
             
-        } catch (Exception ex) {
-            ex.printStackTrace();
+        } catch (Exception e) {
+            e.printStackTrace();
            // Logger.getLogger(Registro.class.getName()).log(Level.SEVERE, null, ex);
         } finally {
             try {
                 binario.close();
-            } catch (IOException ex) {
-                Logger.getLogger(Aviones.class.getName()).log(Level.SEVERE, null, ex);
+            } catch (IOException e) {
+                Logger.getLogger(Aviones.class.getName()).log(Level.SEVERE, null, e);
             }
         }
         
     }
+      
+       public void reportes1(){
+                 try {
+              FileWriter aa = new FileWriter(lista_av);
+              BufferedWriter bw = new BufferedWriter(aa);
+             
+             ht.generarEncabezado("Listado de Aviones");
+             ht.generarpestania("Nombre", "Presicion", "Ataque", "Precio      Activo");
+             bw.write(ht.salida);
+             bw.newLine();
+             for(int i =0; i<avv.size();i++){
+                  ht.generarFilaHTML(avv.get(i).N_Avion, avv.get(i).N_Presicion, avv.get(i).N_Ataque, avv.get(i).N_Precio);
+                  bw.write(ht.filatxt);
+                  bw.newLine();
+              }
+             ht.generarCola();
+             bw.write(ht.cola);
+             bw.newLine();
+             bw.close();
+             aa.close();
+          } catch (Exception e) {
+              
+          }
+    }
+   
   
 
     /**
@@ -254,6 +291,8 @@ public class Aviones extends javax.swing.JFrame {
       
         Aviones_C av  = new Aviones_C (N_Tanque, N_Presicion,N_Ataque, N_Defensa, N_Velocidad, N_Precio);
         contenedor_avion.add(av);
+        avv.add(av);
+      
         //Limpia
         nombre_avion.setText("");
         Presicion.setText("");
@@ -264,6 +303,8 @@ public class Aviones extends javax.swing.JFrame {
         
         Aviones_C p = (Aviones_C)contenedor_avion.getLast();
         createBin();
+        
+        reportes1();
 // TODO
         
         // TODO add your handling code here:

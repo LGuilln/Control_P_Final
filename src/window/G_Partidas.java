@@ -19,7 +19,9 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
+import static window.Bienvenida.pathPartidas;
 import static window.Bienvenida.pathPersona;
+import static window.Estadisticas.contenedor;
 import static window.Registro.list;
 import static window.Registro.nickname;
 
@@ -54,7 +56,7 @@ public class G_Partidas extends javax.swing.JFrame implements Serializable {
  
     public void CargarRegistrar(){
     String datos [][]= {};
-    String columna[]= {"Nombre","Tipo V1", "V1", "Tipo V2", "V2", "Tipo V3", "V3"};
+    String columna[]= {"Batalla","Nombre","Tipo V1", "V1", "Tipo V2", "V2", "Tipo V3", "V3"};
     String columna1[] = { "V1" };
     
     
@@ -73,7 +75,7 @@ public class G_Partidas extends javax.swing.JFrame implements Serializable {
  */
  
     public void readBin(){
-        list.clear();
+          contenedor.clear();
         ObjectInputStream binario = null;
         try {
             String nameFile = nickname.getText();
@@ -85,7 +87,7 @@ public class G_Partidas extends javax.swing.JFrame implements Serializable {
                 
                 binario = new ObjectInputStream(new FileInputStream(pathPersona+string));
                 Persona p = (Persona) binario.readObject();
-                list.add(p);
+                contenedor.add(p);
                 
             }
             
@@ -106,17 +108,18 @@ public class G_Partidas extends javax.swing.JFrame implements Serializable {
     }
     
             public void Cargardatos(){
-                Persona a;
+                Persona pa;
                 for (int i = 0; i < Registro.list.size(); i++) {
-                    a= (Persona)Registro.list.get(i);
+                    pa= (Persona)Registro.list.get(i);
                     modelo.insertRow(cont, new Object []{ });
-                    modelo.setValueAt(a.getNombre(), cont, 0);
-                    modelo.setValueAt(a.getTipo1(), cont, 1);
-                    modelo.setValueAt(a.getV1(), cont, 2);
-                    modelo.setValueAt(a.getTipo2(), cont, 3);
-                    modelo.setValueAt(a.getV2(), cont, 4);
-                    modelo.setValueAt(a.getTipo3(), cont, 5);
-                    modelo.setValueAt(a.getV3(), cont, 6);
+                    modelo.setValueAt(pa.getPartida(), cont, 0);
+                    modelo.setValueAt(pa.getNombre(), cont, 1);
+                    modelo.setValueAt(pa.getTipo1(), cont, 2);
+                    modelo.setValueAt(pa.getV1(), cont, 3);
+                    modelo.setValueAt(pa.getTipo2(), cont, 4);
+                    modelo.setValueAt(pa.getV2(), cont, 5);
+                    modelo.setValueAt(pa.getTipo3(), cont, 6);
+                    modelo.setValueAt(pa.getV3(), cont, 7);
                                                   
                     
                 }
@@ -237,7 +240,7 @@ public class G_Partidas extends javax.swing.JFrame implements Serializable {
 
             },
             new String [] {
-                "Nombre", "Tipo V1", "Vehículo 1", "Tipo V2", "Vehículo 2", "Tipo V3", "Vehículo 3"
+                "Batalla", "Nombre", "Tipo V1", "Vehículo 1", "Tipo V2", "Vehículo 2", "Tipo V3", "Vehículo 3"
             }
         ));
         jScrollPane1.setViewportView(jTableEstadisticas);

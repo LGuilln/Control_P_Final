@@ -6,9 +6,12 @@
 package window;
 
 
+import clases.HTML_V;
 import clases.Tanques_C;
+import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileOutputStream;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.io.ObjectOutputStream;
 import java.util.LinkedList;
@@ -24,7 +27,13 @@ public class Tanques extends javax.swing.JFrame {
     
     public static LinkedList contenedor_tan = new LinkedList();
     public int buscar;
-  
+ 
+    public static ArrayList<Tanques_C> kkk = new ArrayList<>();
+    File lista_tk = new File("Listado de Tanques.html");
+    
+    
+    HTML_V ht = new HTML_V();
+    
     /**
      * Creates new form tienda
      */
@@ -61,6 +70,30 @@ public class Tanques extends javax.swing.JFrame {
         }
         
     }
+     /* public void reportes2(){
+                 try {
+              FileWriter tt = new FileWriter(lista_tk);
+              BufferedWriter bw = new BufferedWriter(tt);
+             
+             ht.generarEncabezado("Listado de Tanques");
+             ht.generarpestania("Nombre", "Presicion", "Ataque", "Precio      Activo");
+             bw.write(ht.salida);
+             bw.newLine();
+             for(int i =0; i<kkk.size();i++){
+                  ht.generarFilaHTML(kkk.get(i).N_Tanque, kkk.get(i).N_Presicion, kkk.get(i).N_Ataque, kkk.get(i).N_Precio);
+                  bw.write(ht.filatxt);
+                  bw.newLine();
+              }
+             ht.generarCola();
+             bw.write(ht.cola);
+             bw.newLine();
+             bw.close();
+             tt.close();
+          } catch (Exception e) {
+              
+          }
+    }
+   
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -253,6 +286,7 @@ public class Tanques extends javax.swing.JFrame {
       
         Tanques_C taq  = new Tanques_C (N_Tanque, N_Presicion,N_Ataque, N_Defensa, N_Velocidad, N_Precio);
         contenedor_tan.add(taq);
+       // kkk.add(taq);
         //Limpia
         nombre_tanque.setText("");
         Presicion.setText("");
@@ -263,6 +297,8 @@ public class Tanques extends javax.swing.JFrame {
         
         Tanques_C t = (Tanques_C)contenedor_tan.getLast();
         createBin5();
+        
+        /*reportes2();*/
         
         // TODO add your handling code here:
     }//GEN-LAST:event_GTanquesActionPerformed

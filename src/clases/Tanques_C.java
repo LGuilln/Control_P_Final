@@ -12,12 +12,12 @@ import java.io.Serializable;
  * @author luedu
  */
 public class Tanques_C implements Serializable{
-    String N_Tanque;
-    String N_Presicion;
-    String N_Ataque;
-    String N_Defensa;
-    String N_Velocidad;
-    String N_Precio;
+   public String N_Tanque;
+   public String N_Presicion;
+   public String N_Ataque;
+   public String N_Defensa;
+   public String N_Velocidad;
+   public String N_Precio;
 
    
       public String getTanque() {

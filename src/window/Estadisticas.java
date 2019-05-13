@@ -73,7 +73,7 @@ public class Estadisticas extends javax.swing.JFrame implements Serializable {
  */
  
     public void readBin(){
-        list.clear();
+        contenedor.clear();
         ObjectInputStream binario = null;
         try {
             String nameFile = nickname.getText();
@@ -85,7 +85,7 @@ public class Estadisticas extends javax.swing.JFrame implements Serializable {
                 
                 binario = new ObjectInputStream(new FileInputStream(pathPersona+string));
                 Persona p = (Persona) binario.readObject();
-                list.add(p);
+                contenedor.add(p);
                 
             }
             
@@ -398,6 +398,8 @@ public class Estadisticas extends javax.swing.JFrame implements Serializable {
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
             java.util.logging.Logger.getLogger(Estadisticas.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
 

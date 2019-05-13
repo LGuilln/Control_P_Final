@@ -37,7 +37,7 @@ public class T_Aviones extends javax.swing.JFrame {
     public T_Aviones() {
         initComponents();
         this.setLocationRelativeTo(null);
-        readBinario();
+        readBinario_Av();
         CargarRegistrar();
         Cargardatos();
         
@@ -54,40 +54,39 @@ public void CargarRegistrar(){
     jTableAviones.setModel(modelo);
     
 }
-
-
-    public void readBinario(){
+     public void readBinario_Av(){
         contenedor_avion.clear();
         ObjectInputStream binario = null;
         try {
-            String nameFile = nombre_avion.getText();
-            File file_av = new File("Aviones");
+            String nameFilesavion = nombre_avion.getText();
+            File file_tavv = new File("Avioness");
             
             
             
-            for (String string2:file_av.list()) {
+            for (String string_a:file_tavv.list()) {
                 
-                binario = new ObjectInputStream(new FileInputStream(pathAviones+string2));
-                Aviones_C av = (Aviones_C) binario.readObject();
-                contenedor_avion.add(av);
+                binario = new ObjectInputStream(new FileInputStream(pathAviones+string_a));
+                Aviones_C va = (Aviones_C) binario.readObject();
+                contenedor_avion.add(va);
                 
             }
             
             
             
             
-        } catch (Exception ext) {
-            ext.printStackTrace();
+        } catch (Exception e) {
+            e.printStackTrace();
            // Logger.getLogger(Registro.class.getName()).log(Level.SEVERE, null, ex);
         } finally {
             try {
                 binario.close();
-            } catch (IOException ext) {
-                Logger.getLogger(Aviones.class.getName()).log(Level.SEVERE, null, ext);
+            } catch (IOException e) {
+                Logger.getLogger(Aviones.class.getName()).log(Level.SEVERE, null, e);
             }
         }
-        
+         
     }
+    
     
             public void Cargardatos(){
                 Aviones_C c;

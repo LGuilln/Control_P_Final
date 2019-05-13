@@ -38,7 +38,7 @@ public final class T_Tanques extends javax.swing.JFrame {
     public T_Tanques() {
         initComponents();
         this.setLocationRelativeTo(null);
-        readBinario_T();
+        readBinario_Taq();
         CargarRegistrar();
         Cargardatos();
     }
@@ -55,39 +55,42 @@ public void CargarRegistrar(){
     
 }
 
- public void readBinario_T(){
+ 
+ public void readBinario_Taq(){
         contenedor_tan.clear();
         ObjectInputStream binario = null;
         try {
             String nameFiles = nombre_tanque.getText();
-            File file_ta = new File("Tanques");
+            File file_tan = new File("Tanquess");
             
             
             
-            for (String string_t:file_ta.list()) {
+            for (String string_ta:file_tan.list()) {
                 
-                binario = new ObjectInputStream(new FileInputStream(pathTanques+string_t));
-                Tanques_C tankk = (Tanques_C) binario.readObject();
-                contenedor_tan.add(tankk);
+                binario = new ObjectInputStream(new FileInputStream(pathTanques+string_ta));
+                Tanques_C tkk = (Tanques_C) binario.readObject();
+                contenedor_tan.add(tkk);
                 
             }
             
             
             
             
-        } catch (Exception ez) {
-            ez.printStackTrace();
+        } catch (Exception e) {
+            e.printStackTrace();
            // Logger.getLogger(Registro.class.getName()).log(Level.SEVERE, null, ex);
         } finally {
             try {
                 binario.close();
-            } catch (IOException ez) {
-                Logger.getLogger(Tanques.class.getName()).log(Level.SEVERE, null, ez);
+            } catch (IOException e) {
+                Logger.getLogger(Tanques.class.getName()).log(Level.SEVERE, null, e);
             }
         }
          
     }
-   
+
+ 
+ 
             public void Cargardatos(){
                 Tanques_C t;
                 for (int i = 0; i < Tanques.contenedor_tan.size(); i++) {

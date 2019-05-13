@@ -25,6 +25,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import static window.Bienvenida.pathPersona;
 import clases.HTML;
+import clases.HTML_B;
 /**
  *
  * @author luedu
@@ -33,10 +34,19 @@ public class Registro extends javax.swing.JFrame {
 
     public static LinkedList list = new LinkedList();
     public int buscar;
-    
     public static ArrayList<Persona> sur = new ArrayList<>();
-        File lista = new File("reporte.html");
+    File lista = new File("Reporte de Vehiculos.html");
+    
+    public static LinkedList list_bat = new LinkedList();
+    //public int buscar;
+    
+    public static ArrayList<Persona> bat = new ArrayList<>();
+    File lista_par = new File("Reporte de Partidas.html");
+    
+    
     HTML ht = new HTML();
+    HTML_B ls = new HTML_B();
+    
     static int cont;
 
 //     String barra = File.separator;
@@ -49,55 +59,17 @@ public class Registro extends javax.swing.JFrame {
  
     }
 
-   /* private void Crear(){
-    
-        String archivo = nickname.getText()+ ".registros";
-        File crea_ubicacion = new File (ubicacion);
-        File crea_archivo = new File (ubicacion+archivo);
-         if(nickname.getText().equals("")){
-             JOptionPane.showMessageDialog(rootPane, "No hay NickName");
-        }else{
-             
-             try{
-             
-             if(crea_archivo.exists()){
-             JOptionPane.showMessageDialog(rootPane, "El Registro ya Existe");
-             }else{
-             
-                 crea_ubicacion.mkdirs();
-                 Formatter crea = new Formatter(ubicacion+archivo);
-               crea.format ("%s\r\n%s\r\n%s\r\n%s", 
-                         "NickName="+nickname.getText(),
-                         "Vehiculo 1="+v_1.getText(), "Vehiculo 2="+v_2.getText(),
-                         "Vehiculo 3="+v_3.getText());
-                 crea.close();
-                 
-                 
-             }
-             } catch (Exception e){
-               JOptionPane.showMessageDialog(rootPane, "No Creado");
- 
-                 
-             }
-             
-             
-             
-             
-         } 
-
-    }*/
-    
  /**
  * Método para C_Binario
  * @param evt 
  */
    public void createBin(){
-        ObjectOutputStream binario = null;
+       ObjectOutputStream binario = null;
         try {
             String nameFile = nickname.getText();
             File file = new File(nameFile);
             Persona persona = (Persona) list.getLast();
-           
+            
             binario = new ObjectOutputStream(new FileOutputStream(pathPersona+persona.getNombre()+".person"));
             binario.writeObject(persona);
             
@@ -137,17 +109,16 @@ public class Registro extends javax.swing.JFrame {
     }    /*/
     
    public void reportes(){
-        
-                  try {
+                 try {
               FileWriter jj = new FileWriter(lista);
               BufferedWriter bw = new BufferedWriter(jj);
              
-             ht.generarEncabezado("Vehiculos");
-             ht.generarpestania("Nombre", "Tipo", "Vehiculo 2", "Vehiculo 3");
+             ht.generarEncabezado("Reporte de Vehiculos");
+             ht.generarpestania("Nombre", "Primer Vehiculo", "Segundo Vehiculo", "Tercer Vehiculo      Ganadas-Perdidas");
              bw.write(ht.salida);
              bw.newLine();
              for(int i =0; i<sur.size();i++){
-                  ht.generarFilaHTML(sur.get(i).nombre, sur.get(i).tipo1, sur.get(i).tipo2, sur.get(i).tipo3);
+                  ht.generarFilaHTML(sur.get(i).nombre, sur.get(i).v1, sur.get(i).v2, sur.get(i).v3);
                   bw.write(ht.filatxt);
                   bw.newLine();
               }
@@ -159,15 +130,37 @@ public class Registro extends javax.swing.JFrame {
           } catch (Exception e) {
               
           }
-    }   
- 
-    
+    }
+   
+   public void listado_par(){
+                 try {
+              FileWriter pa = new FileWriter(lista_par);
+              BufferedWriter bw = new BufferedWriter(pa);
+             
+             ls.generarEncabezado("Reporte de Batallas");
+             ls.generarpestania("No. Partida","Nombre", "Primer Vehiculo", "Segundo VehiculoBatallas");
+             bw.write(ls.salida);
+             bw.newLine();
+             for(int i =0; i<sur.size();i++){
+                   ls.generarFilaHTML(bat.get(i).partidas, bat.get(i).nombre, bat.get(i).v1, bat.get(i).v2);
+                  bw.write(ls.filatxt);
+                  bw.newLine();
+              }
+             ls.generarCola();
+             bw.write(ls.cola);
+             bw.newLine();
+             bw.close();
+             pa.close();
+          } catch (Exception ee) {
+              
+          }
+    }
     public Image getIconImage() {
         Image retValue = Toolkit.getDefaultToolkit().getImage(ClassLoader.getSystemResource("lueduardogr/picture/iconin.png"));
         return retValue;
     }
     public void contador(){
-        Partidas.setText(Integer.toString(cont));
+        no_Partidas.setText(Integer.toString(cont));
     }
     /**
      * This method is called from within the constructor to initialize the form.
@@ -178,7 +171,7 @@ public class Registro extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        Partidas = new javax.swing.JTextField();
+        no_Partidas = new javax.swing.JTextField();
         jlNickname = new javax.swing.JLabel();
         Back = new javax.swing.JButton();
         jLabel4 = new javax.swing.JLabel();
@@ -205,15 +198,15 @@ public class Registro extends javax.swing.JFrame {
         setUndecorated(true);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        Partidas.setEditable(false);
-        Partidas.setFont(new java.awt.Font("Arial Black", 0, 14)); // NOI18N
-        Partidas.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        Partidas.addActionListener(new java.awt.event.ActionListener() {
+        no_Partidas.setEditable(false);
+        no_Partidas.setFont(new java.awt.Font("Arial Black", 0, 14)); // NOI18N
+        no_Partidas.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        no_Partidas.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                PartidasActionPerformed(evt);
+                no_PartidasActionPerformed(evt);
             }
         });
-        getContentPane().add(Partidas, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 100, 30, 30));
+        getContentPane().add(no_Partidas, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 100, 30, 30));
 
         jlNickname.setBackground(new java.awt.Color(102, 255, 102));
         jlNickname.setFont(new java.awt.Font("Arial Black", 0, 24)); // NOI18N
@@ -410,6 +403,7 @@ public class Registro extends javax.swing.JFrame {
     private void SaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SaveActionPerformed
      contador();
      cont++;
+     String partidas = no_Partidas.getText();
      String nombre = nickname.getText();
      String v1 = v_1.getText();
      String v2 = v_2.getText();
@@ -419,9 +413,11 @@ public class Registro extends javax.swing.JFrame {
      String tipo3 = M_3.getText();
      
         //NOMBRE DE LA PERSONA ATRUBUTOS
-       Persona  person = new Persona( nombre, v1, v2, v3, tipo1, tipo2, tipo3);
+       Persona  person = new Persona( partidas, nombre, v1, v2, v3, tipo1, tipo2, tipo3);
         list.add(person);
         sur.add(person);
+        bat.add(person);
+        
         //Limpia
      
         nickname.setText("");
@@ -432,6 +428,7 @@ public class Registro extends javax.swing.JFrame {
         Persona p = (Persona)list.getLast();
         createBin();
         reportes();
+        listado_par();
 // TODO add your handling code here:
     }//GEN-LAST:event_SaveActionPerformed
 
@@ -482,9 +479,9 @@ public class Registro extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_CB1ActionPerformed
 
-    private void PartidasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PartidasActionPerformed
+    private void no_PartidasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_no_PartidasActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_PartidasActionPerformed
+    }//GEN-LAST:event_no_PartidasActionPerformed
 
     /**
      * @param args the command line arguments
@@ -534,7 +531,6 @@ public class Registro extends javax.swing.JFrame {
     public static javax.swing.JTextField M_1;
     public static javax.swing.JTextField M_2;
     public static javax.swing.JTextField M_3;
-    public static javax.swing.JTextField Partidas;
     private javax.swing.JButton Save;
     private javax.swing.JButton jButton3Reportes;
     public static javax.swing.JLabel jLabel1;
@@ -544,6 +540,7 @@ public class Registro extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jlNickname;
     public static javax.swing.JTextField nickname;
+    public static javax.swing.JTextField no_Partidas;
     public static javax.swing.JTextField v_1;
     public static javax.swing.JTextField v_2;
     public static javax.swing.JTextField v_3;

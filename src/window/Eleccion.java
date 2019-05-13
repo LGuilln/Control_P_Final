@@ -132,7 +132,7 @@ public class Eleccion extends javax.swing.JFrame {
 
     private void BbackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BbackActionPerformed
         this.setVisible(false);
-        new Eleccion().setVisible(true);// TODO add your handling code here:
+        new Option().setVisible(true);// TODO add your handling code here:
     }//GEN-LAST:event_BbackActionPerformed
 
     private void ExitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ExitActionPerformed

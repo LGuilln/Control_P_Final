@@ -89,7 +89,7 @@ public class Bienvenida extends javax.swing.JFrame {
       principa2.show();
       principa2.setVisible(false);
        
-      Estadisticas principal = new Estadisticas();
+      G_Partidas principal = new G_Partidas();
       principal.show();
       this.setVisible(false); 
        
@@ -135,9 +135,10 @@ public class Bienvenida extends javax.swing.JFrame {
         //</editor-fold>
         File createCarpeta = new File("Persona");
         File createCarpeta1 = new File("Armas");
-        File createCarpeta2 = new File("Aviones");
-        File createCarpeta3 = new File("Tanques");
-        if (!createCarpeta.exists()) {
+        File createCarpeta2 = new File("Avioness");
+        File createCarpeta3 = new File("Tanquess");
+          File createCarpeta4= new File("Partidas");
+       if (!createCarpeta.exists()) {
             createCarpeta.mkdir();
         }
         
@@ -145,6 +146,7 @@ public class Bienvenida extends javax.swing.JFrame {
         pathArmas = createCarpeta1.getAbsolutePath()+File.separatorChar;
         pathAviones = createCarpeta2.getAbsolutePath()+File.separatorChar;
         pathTanques = createCarpeta3.getAbsolutePath()+File.separatorChar;
+        pathPartidas = createCarpeta4.getAbsolutePath()+File.separatorChar;
         
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
@@ -155,6 +157,7 @@ public class Bienvenida extends javax.swing.JFrame {
     public static String pathArmas;
     public static String pathTanques;
     public static String pathAviones;
+    public static String pathPartidas;
     public static String pathPersona;
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton BJugar;

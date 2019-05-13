@@ -25,16 +25,17 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import static window.Bienvenida.pathPersona;
 import clases.HTML;
+import clases.HTML_B;
 import static window.Registro.M_1;
 import static window.Registro.M_2;
 import static window.Registro.M_3;
-import static window.Registro.Partidas;
 import static window.Registro.list;
 import static window.Registro.nickname;
 import static window.Registro.sur;
 import static window.Registro.v_1;
 import static window.Registro.v_2;
 import static window.Registro.v_3;
+import static window.Registro.no_Partidas;
 
 /**
  *
@@ -42,13 +43,21 @@ import static window.Registro.v_3;
  */
 public class Registro2P extends javax.swing.JFrame {
 
-    public static LinkedList list = new LinkedList();
+      public static LinkedList list = new LinkedList();
     public int buscar;
-    
     public static ArrayList<Persona> sur = new ArrayList<>();
-        File lista = new File("reporte.html");
+    File lista = new File("Reporte de Vehiculos.html");
+    
+    public static LinkedList list_bat = new LinkedList();
+    //public int buscar;
+    
+    public static ArrayList<Persona> bat = new ArrayList<>();
+    File lista_par = new File("Reporte de Partidas.html");
+    
+    
     HTML ht = new HTML();
-    static int cont;
+    HTML_B ls = new HTML_B();
+  static int cont;
 
 //     String barra = File.separator;
   //  String ubicacion = System.getProperty("user.dir" + barra+ "\\Registros"+barra);
@@ -60,51 +69,13 @@ public class Registro2P extends javax.swing.JFrame {
  
     }
 
-   /* private void Crear(){
-    
-        String archivo = nickname.getText()+ ".registros";
-        File crea_ubicacion = new File (ubicacion);
-        File crea_archivo = new File (ubicacion+archivo);
-         if(nickname.getText().equals("")){
-             JOptionPane.showMessageDialog(rootPane, "No hay NickName");
-        }else{
-             
-             try{
-             
-             if(crea_archivo.exists()){
-             JOptionPane.showMessageDialog(rootPane, "El Registro ya Existe");
-             }else{
-             
-                 crea_ubicacion.mkdirs();
-                 Formatter crea = new Formatter(ubicacion+archivo);
-               crea.format ("%s\r\n%s\r\n%s\r\n%s", 
-                         "NickName="+nickname.getText(),
-                         "Vehiculo 1="+v_1.getText(), "Vehiculo 2="+v_2.getText(),
-                         "Vehiculo 3="+v_3.getText());
-                 crea.close();
-                 
-                 
-             }
-             } catch (Exception e){
-               JOptionPane.showMessageDialog(rootPane, "No Creado");
- 
-                 
-             }
-             
-             
-             
-             
-         } 
-
-    }*/
-    
  /**
  * Método para C_Binario
  * @param evt 
  */
  
-    public void createBin(){
-        ObjectOutputStream binario = null;
+   public void createBin(){
+       ObjectOutputStream binario = null;
         try {
             String nameFile = nickname.getText();
             File file = new File(nameFile);
@@ -120,24 +91,24 @@ public class Registro2P extends javax.swing.JFrame {
             try {
                 binario.close();
             } catch (IOException ex) {
-                Logger.getLogger(Registro2P.class.getName()).log(Level.SEVERE, null, ex);
+                Logger.getLogger(Registro.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
         
     }
     
-    public void reportes(){
-        
-                  try {
+    
+   public void reportes(){
+                 try {
               FileWriter jj = new FileWriter(lista);
               BufferedWriter bw = new BufferedWriter(jj);
              
-             ht.generarEncabezado("Vehiculos");
-             ht.generarpestania("Nombre", "Tipo", "Vehiculo 2", "Vehiculo 3");
+             ht.generarEncabezado("Reporte de Vehiculos");
+             ht.generarpestania("Nombre", "Primer Vehiculo", "Segundo Vehiculo", "Tercer Vehiculo      Ganadas-Perdidas");
              bw.write(ht.salida);
              bw.newLine();
              for(int i =0; i<sur.size();i++){
-                  ht.generarFilaHTML(sur.get(i).nombre, sur.get(i).tipo1, sur.get(i).tipo2, sur.get(i).tipo3);
+                  ht.generarFilaHTML(sur.get(i).nombre, sur.get(i).v1, sur.get(i).v2, sur.get(i).v3);
                   bw.write(ht.filatxt);
                   bw.newLine();
               }
@@ -150,8 +121,30 @@ public class Registro2P extends javax.swing.JFrame {
               
           }
     }
-    
-    
+   
+   public void listado_par(){
+                 try {
+              FileWriter pa = new FileWriter(lista_par);
+              BufferedWriter bw = new BufferedWriter(pa);
+             
+             ls.generarEncabezado("Reporte de Batallas");
+             ls.generarpestania("No. Partida","Nombre", "Primer Vehiculo", "Segundo VehiculoBatallas");
+             bw.write(ls.salida);
+             bw.newLine();
+             for(int i =0; i<sur.size();i++){
+                   ls.generarFilaHTML(bat.get(i).partidas, bat.get(i).nombre, bat.get(i).v1, bat.get(i).v2);
+                  bw.write(ls.filatxt);
+                  bw.newLine();
+              }
+             ls.generarCola();
+             bw.write(ls.cola);
+             bw.newLine();
+             bw.close();
+             pa.close();
+          } catch (Exception ee) {
+              
+          }
+    }
     public Image getIconImage() {
         Image retValue = Toolkit.getDefaultToolkit().getImage(ClassLoader.getSystemResource("lueduardogr/picture/iconin.png"));
         return retValue;
@@ -398,8 +391,9 @@ public class Registro2P extends javax.swing.JFrame {
  */
  
     private void SaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SaveActionPerformed
-       contador();
+     contador();
      cont++;
+     String partidas = no_Partidas.getText();
      String nombre = nickname.getText();
      String v1 = v_1.getText();
      String v2 = v_2.getText();
@@ -409,9 +403,11 @@ public class Registro2P extends javax.swing.JFrame {
      String tipo3 = M_3.getText();
      
         //NOMBRE DE LA PERSONA ATRUBUTOS
-       Persona  person = new Persona( nombre, v1, v2, v3, tipo1, tipo2, tipo3);
-        list.add(person);
+     Persona  person = new Persona( partidas, nombre, v1, v2, v3, tipo1, tipo2, tipo3);
+          list.add(person);
         sur.add(person);
+        bat.add(person);
+        
         //Limpia
      
         nickname.setText("");

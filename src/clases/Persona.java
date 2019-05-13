@@ -13,11 +13,7 @@ import java.io.Serializable;
  */
 public class Persona implements Serializable{
     public String nombre;
-    public String  v1, v2, v3, tipo1, tipo2, tipo3;
-
- //   public Persona(String nombre, String v1, String v2, String v3, String tipo1, String tipo2, String tipo3) {
-   //     throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    //}
+    public String partidas, v1, v2, v3, tipo1, tipo2, tipo3;
 
     
     /*
@@ -30,6 +26,14 @@ public class Persona implements Serializable{
     }
    */
 
+    
+    public String getPartida() {
+        return partidas;
+    }
+
+    public void setPartida(String partidas) {
+        this.partidas = partidas;
+    }
     public String getTipo1() {
         return tipo1;
     }
@@ -78,9 +82,10 @@ public class Persona implements Serializable{
         this.v3 = v3;
     }
 
-    public Persona( String nombre, String v1, String v2, String v3, String tipo1, String tipo2, String tipo3) {
+    public Persona( String partidas, String nombre, String v1, String v2, String v3, String tipo1, String tipo2, String tipo3) {
         
     //    this.partida = partida; 
+        this.partidas = partidas;
         this.nombre = nombre;
         this.v1 = v1;
         this.v2 = v2;

@@ -22,53 +22,40 @@ import javax.swing.JButton;
 import javax.swing.JDialog;
 import javax.swing.JOptionPane;
 
-
 /**
  *
  * @author luedu
  */
 public class G_Escenarios extends javax.swing.JFrame {
+
     int turno, contp, contmp;
-    boolean gano= false;
+    boolean gano = false;
     int largo, alto;
     int pos1, pos2, filaVehiculos, columnaVehiculo;
-            
-  Escenario_E[][] tablero;
-  int[][] juego =null;
+
+    Escenario_E[][] tablero;
+    int[][] juego = null;
+
     /**
-     * constructor
-     * Creates new form Escenarios
+     * constructor Creates new form Escenarios
      */
     public G_Escenarios() {
         initComponents();
-         this.setLocationRelativeTo(null);
-          turno = contp = contmp = 1;
-          
-        //tablero = new Casilla[8][8];
+        this.setLocationRelativeTo(null);
+        turno = contp = contmp = 1;
     }
-    
-        public void mover(int fe, int ce, int fv, int cv){
-        if(fe==fv || ce==cv){
-            /*
-            if(fe<fv){
-                Izquierda(total, fe, ce);
-            }else if(fe>fv){
-                Derecha(total, fe, ce);
-            }else if(ce<cv){
-                Arriba(total, fe, ce);
-            }else if(ce>cv){
-                Abajo(total, fe, ce);
-            }else{}
-            */
-        }else{
+
+    public void mover(int fe, int ce, int fv, int cv) {
+        if (fe == fv || ce == cv) {
+
+        } else {
             JOptionPane.showMessageDialog(null, "Movimiento Invalido");
         }
     }
-    
-    
+
     private void Tablero() {
-        
-            for (int fila = 0; fila < largo; fila++) {
+
+        for (int fila = 0; fila < largo; fila++) {
             System.out.println("");
             for (int columna = 0; columna < alto; columna++) {
                 System.out.print(juego[fila][columna] + ", ");
@@ -191,206 +178,191 @@ public class G_Escenarios extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    
-    
-    
-    
     /**
      * Método para Salir
-     * @param evt 
+     *
+     * @param evt
      */
     private void jButtonHaciaEActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonHaciaEActionPerformed
-       this.setVisible(false);
-       new Bienvenida().setVisible(true);
-   
-        //new OpcionesFinales().setVisible(true);
-     /*   
-        OpcionesFinales entrada3 = new OpcionesFinales();
-        entrada3.show();
-        entrada3.setSize(825, 866);
-            dispose();  */  
+        this.setVisible(false);
+        new Bienvenida().setVisible(true);
+
     }//GEN-LAST:event_jButtonHaciaEActionPerformed
     /**
      * Método para mostrar el escenario Generico
+     *
      * @param filas
-     * @param columnas 
+     * @param columnas
      */
-    public void gTablero(int filas, int columnas){
-    BorderLayout b = new BorderLayout();
-    largo=filas;
-    alto=columnas;
- 
-        tablero =  new Escenario_E[filas][columnas];
+    public void gTablero(int filas, int columnas) {
+        BorderLayout b = new BorderLayout();
+        largo = filas;
+        alto = columnas;
+
+        tablero = new Escenario_E[filas][columnas];
         juego = new int[filas][columnas];
         Random n = new Random();
-         boolean blanco = true;
-         System.out.println("filas" + filas);
-        for (int i = 0; i<filas; i++){
-            for (int j = 0; j<columnas; j++){
-                
-                int c = (int)((Math.random()*3)+1);
+        boolean blanco = true;
+        System.out.println("filas" + filas);
+        for (int i = 0; i < filas; i++) {
+            for (int j = 0; j < columnas; j++) {
+
+                int c = (int) ((Math.random() * 3) + 1);
                 System.out.println(c);
-                switch(c){
-                    case 1: 
-                        juego[i][j]= 1;
-                        tablero[i][j] = new Escenario_E ();
-                         tablero[i][j].setBounds((50*j), 50*i, 50, 50);
-                          tablero[i][j]= new E_Terreno();
-                          break;
+                switch (c) {
+                    case 1:
+                        juego[i][j] = 1;
+                        tablero[i][j] = new Escenario_E();
+                        tablero[i][j].setBounds((50 * j), 50 * i, 50, 50);
+                        tablero[i][j] = new E_Terreno();
+                        break;
                     case 2:
-                        juego[i][j]= 2;
-                        tablero[i][j] = new Escenario_E ();
-                         tablero[i][j].setBounds((50*j), 50*i, 50, 50);
-                          tablero[i][j]= new E_Montaña();
-                          break;
+                        juego[i][j] = 2;
+                        tablero[i][j] = new Escenario_E();
+                        tablero[i][j].setBounds((50 * j), 50 * i, 50, 50);
+                        tablero[i][j] = new E_Montaña();
+                        break;
                     case 3:
-                        juego[i][j]= 3;
-                        tablero[i][j] = new Escenario_E ();
-                         tablero[i][j].setBounds((50*j), 50*i, 50, 50);
-                          tablero[i][j]= new E_Agua();
-                    break;
+                        juego[i][j] = 3;
+                        tablero[i][j] = new Escenario_E();
+                        tablero[i][j].setBounds((50 * j), 50 * i, 50, 50);
+                        tablero[i][j] = new E_Agua();
+                        break;
                     default:
-                    break;
-                    
+                        break;
+
                 }
-                 Pieza accion = new Pieza();
+                Pieza accion = new Pieza();
                 tablero[i][j].addActionListener(accion);
                 tablero[i][j].setVisible(true);
 
-                tablero[i][j].setBounds((50*j), 50*i, 50, 50);
-               
+                tablero[i][j].setBounds((50 * j), 50 * i, 50, 50);
+
                 panelTablero.add(tablero[i][j]);
                 panelTablero.updateUI();
                 panelTablero.setLayout(new GridLayout(filas, columnas));
                 panelTablero.repaint();
             }
-           
+
             blanco = !blanco;
         }
-        
-        int d = (int) (Math.random()*4);
-        int d2 = (int) (Math.random()*4);
+
+        int d = (int) (Math.random() * 4);
+        int d2 = (int) (Math.random() * 4);
         ImageIcon tanque = new ImageIcon("src/picture/tanque_T.png");
         Icon iconoTanque = new ImageIcon(tanque.getImage().getScaledInstance(55, 55, Image.SCALE_SMOOTH));
         tablero[d][d2].setIcon(iconoTanque);
         juego[d][d2] = 5;
-        filaVehiculos=d;
-        columnaVehiculo=d2;
-        
-        int a =  (int) (Math.random()*4);
-        int a2 = (int) (Math.random()*4);
+        filaVehiculos = d;
+        columnaVehiculo = d2;
+
+        int a = (int) (Math.random() * 4);
+        int a2 = (int) (Math.random() * 4);
         ImageIcon avion = new ImageIcon("src/picture/avion_T.png");
         Icon iconoAvion = new ImageIcon(avion.getImage().getScaledInstance(55, 55, Image.SCALE_SMOOTH));
         tablero[a][a2].setIcon(iconoAvion);
         juego[a][a2] = 4;
-        
-        int c = (int) (Math.random()*4);
-        int c2 = (int) (Math.random()*4);
-            ImageIcon comodin = new ImageIcon("src/picture/gift.png");
-        Icon iconoComodin = new ImageIcon(comodin.getImage().getScaledInstance(45, 45, Image.SCALE_SMOOTH));
-         tablero[c][c2].setIcon(iconoComodin);
-        juego[c][c2] = 4;
-        
-        
-        Tablero();
-}
-    
-        private class Pieza implements ActionListener {
 
-        int vida=100;
-        
+        int c = (int) (Math.random() * 4);
+        int c2 = (int) (Math.random() * 4);
+        ImageIcon comodin = new ImageIcon("src/picture/gift.png");
+        Icon iconoComodin = new ImageIcon(comodin.getImage().getScaledInstance(45, 45, Image.SCALE_SMOOTH));
+        tablero[c][c2].setIcon(iconoComodin);
+        juego[c][c2] = 4;
+
+        Tablero();
+    }
+
+    private class Pieza implements ActionListener {
+
+        int vida = 100;
+
         @Override
         public void actionPerformed(ActionEvent click) {
             for (int fila1 = 0; fila1 < largo; fila1++) {
                 for (int columna = 0; columna < alto; columna++) {
                     if (click.getSource().equals(tablero[fila1][columna])) {
-                       
+
                         pos1 = fila1;
                         pos2 = columna;
                         int f;
-                            switch(juego[fila1][columna]){
-                                case 1:
-                                    //Distancia(pos1, pos2, filaVehiculos, columnaVehiculo);
-                                    mover(pos1, pos2, filaVehiculos, columnaVehiculo);
-                                    break;
-                                case 2:
-                                    f = (int)(Math.random()*100);
-                                    vida=vida-f;
-                                    vidas(fila1, columna);
-                                    break;
-                                case 3:
-                                    f = (int)(Math.random()*100);
-                                    vida=vida-f;
-                                    vidas(fila1, columna);
-                                    break;
-                        }             
-                        
+                        switch (juego[fila1][columna]) {
+                            case 1:
+                                mover(pos1, pos2, filaVehiculos, columnaVehiculo);
+                                break;
+                            case 2:
+                                f = (int) (Math.random() * 100);
+                                vida = vida - f;
+                                vidas(fila1, columna);
+                                break;
+                            case 3:
+                                f = (int) (Math.random() * 100);
+                                vida = vida - f;
+                                vidas(fila1, columna);
+                                break;
+                        }
+
                         System.out.println(tablero[fila1][columna].getColorModel());
                         System.out.println("Fila " + fila1 + " Columna " + columna);
                         System.out.println(juego[fila1][columna]);
-
-
                     }
                 }
             }
         }
 
-        private void vidas(int fila1, int columna){
-            if(vida<=0){
+        private void vidas(int fila1, int columna) {
+            if (vida <= 0) {
                 juego[fila1][columna] = 1;
                 tablero[fila1][columna].setBackground(Color.gray);
-            }else{}
+            } else {
+            }
         }
     }
 
-    
-    
-    
     /**
      * Método para Generar Randoms
+     *
      * @param N
-     * @param M 
+     * @param M
      */
-    public void metodoRandom(int N, int M){
+    public void metodoRandom(int N, int M) {
         Random n = new Random();
         n.nextInt(5);
         n.nextInt(6);
-        
-        
     }
-    
-    
+
+
     private void jButton4x4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4x4ActionPerformed
         panelTablero.removeAll();
         jButton6x4.setVisible(false);
         jButton8x9.setVisible(false);
         gTablero(4, 4);
-       
-        
+
+
     }//GEN-LAST:event_jButton4x4ActionPerformed
 
     private void jButton6x4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6x4ActionPerformed
         jButton4x4.setVisible(false);
         jButton8x9.setVisible(false);
-       panelTablero.removeAll();
+        panelTablero.removeAll();
         gTablero(6, 4);
     }//GEN-LAST:event_jButton6x4ActionPerformed
 
     private void jButton8x9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton8x9ActionPerformed
-         panelTablero.removeAll();
-         jButton4x4.setVisible(false);
-         jButton6x4.setVisible(false);
+        panelTablero.removeAll();
+        jButton4x4.setVisible(false);
+        jButton6x4.setVisible(false);
         gTablero(8, 9);
     }//GEN-LAST:event_jButton8x9ActionPerformed
 
     private void jButtonDadosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonDadosActionPerformed
-       new Elegir_Dados().setVisible(true);       
+        new Elegir_Dados().setVisible(true);
     }//GEN-LAST:event_jButtonDadosActionPerformed
 
     private void jButtonAtrasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAtrasActionPerformed
-       this.setVisible(false);
-       new TipoPartida().setVisible(true);
-        
+        this.setVisible(false);
+        new TipoPartida().setVisible(true);
+
         // TODO add your handling code here:
     }//GEN-LAST:event_jButtonAtrasActionPerformed
 
